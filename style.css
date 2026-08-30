@@ -13,7 +13,7 @@ body {
 
 .store-header {
     max-width: 1400px;
-    margin: 0 auto 20px;
+    margin: 0 auto 15px;
     background: #ffffff;
     padding: 15px 20px;
     border-radius: 8px;
@@ -45,9 +45,63 @@ body {
     color: #777777;
 }
 
-.product-grid {
+.banner-section {
     max-width: 1400px;
-    margin: 0 auto;
+    margin: 0 auto 25px;
+}
+
+.banner-container {
+    position: relative;
+    width: 100%;
+    height: 260px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.banner-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.banner-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.75));
+    color: #ffffff;
+    padding: 20px;
+}
+
+.banner-overlay h2 {
+    font-size: 1.5rem;
+    color: #f4d06f;
+    margin-bottom: 5px;
+}
+
+.banner-overlay p {
+    font-size: 0.85rem;
+    color: #e0e0e0;
+}
+
+.main-section {
+    max-width: 1400px;
+    margin: 0 auto 30px;
+}
+
+.section-title {
+    margin-bottom: 15px;
+    padding-left: 5px;
+}
+
+.section-title h2 {
+    font-size: 1.2rem;
+    color: #222222;
+}
+
+.product-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
     gap: 15px;
@@ -192,6 +246,37 @@ body {
 
 .btn-add-cart:hover {
     background: #3e312a;
+}
+
+.info-section {
+    max-width: 1400px;
+    margin: 0 auto 20px;
+}
+
+.info-card {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.info-card h3 {
+    font-size: 1.05rem;
+    color: #222222;
+    margin-bottom: 12px;
+}
+
+.info-list {
+    list-style: none;
+    font-size: 0.88rem;
+    color: #555555;
+    line-height: 1.8;
+}
+
+.about-card p {
+    font-size: 0.88rem;
+    color: #555555;
+    line-height: 1.7;
 }
 
 .floating-cart {
