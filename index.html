@@ -8,7 +8,6 @@
 </head>
 <body>
 
-    <!-- 1. 顶部 Header -->
     <header class="store-header">
         <div class="brand-box">
             <img src="logo.jpg" alt="月里人家 Logo" class="brand-logo">
@@ -19,179 +18,200 @@
         </div>
     </header>
 
-    <!-- 2. 大尺寸 Banner 宣传统图 -->
-    <section class="banner-section">
-        <div class="banner-container">
-            <img src="logo.jpg" alt="月里人家中秋宣传" class="banner-img">
-            <div class="banner-overlay">
-                <h2>月里人家 · 团圆之味</h2>
-                <p>🥮 纯手工住家烘焙 | 减糖低脂配方 | 每日限量新鲜出炉</p>
-            </div>
-        </div>
-    </section>
+    <div class="page-container">
 
-    <!-- 3. 产品展示区 (Product Grid) -->
-    <section class="main-section">
-        <div class="section-title">
-            <h2>🥮 精选手工月饼</h2>
-        </div>
-
-        <main class="product-grid">
-
-            <!-- 商品 1：传统月饼 (1 Box / 4 pcs) -->
-            <div class="card">
-                <div class="card-img-container">
-                    <img src="images/mooncake1.jpg" alt="月里人家传统月饼 4粒装" onerror="this.src='logo.jpg'">
+        <!-- 块 1: 大尺寸 Banner 展示区 -->
+        <section class="block-section banner-section">
+            <div class="banner-container">
+                <img src="logo.jpg" alt="月里人家中秋宣传" class="banner-img">
+                <div class="banner-overlay">
+                    <h2>月里人家 · 团圆之味</h2>
+                    <p>🥮 纯手工住家烘焙 | 减糖低脂配方 | 每日限量新鲜出炉</p>
                 </div>
-                <div class="card-body">
-                    <h3 class="product-name">传统月饼 (1 Box / 4 pcs)</h3>
-                    <p class="product-desc">自家精心熬煮馅料，皮薄馅靓，每盒任选 4 粒。</p>
-                    <div class="price-text">RM 28.00 / Box</div>
-                    
-                    <div class="flavor-section">
-                        <p class="flavor-tip">任选 4 粒口味 (Total: 0/4):</p>
+            </div>
+        </section>
+
+        <!-- 块 2: 精选产品展示区 -->
+        <section class="block-section product-section">
+            <div class="section-header">
+                <h2>🥮 精选手工月饼</h2>
+                <span class="section-sub">可自行勾选口味与数量</span>
+            </div>
+
+            <div class="product-grid">
+
+                <div class="card">
+                    <div class="card-img-container">
+                        <img src="images/mooncake1.jpg" alt="月里人家传统月饼 4粒装" onerror="this.src='logo.jpg'">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="product-name">传统月饼 (1 Box / 4 pcs)</h3>
+                        <p class="product-desc">自家精心熬煮馅料，皮薄馅靓，每盒任选 4 粒。</p>
+                        <div class="price-text">RM 28.00 / Box</div>
                         
-                        <div class="flavor-row">
-                            <span class="flavor-name">🥮 翡翠豆蓉</span>
-                            <div class="qty-picker">
-                                <button class="btn-qty">-</button>
-                                <span class="qty-num">0</span>
-                                <button class="btn-qty">+</button>
+                        <div class="flavor-section">
+                            <p class="flavor-tip">任选 4 粒口味 (Total: 0/4):</p>
+                            
+                            <div class="flavor-row">
+                                <span class="flavor-name">🥮 翡翠豆蓉</span>
+                                <div class="qty-picker">
+                                    <button class="btn-qty">-</button>
+                                    <span class="qty-num">0</span>
+                                    <button class="btn-qty">+</button>
+                                </div>
+                            </div>
+
+                            <div class="flavor-row">
+                                <span class="flavor-name">🥮 玫瑰豆沙</span>
+                                <div class="qty-picker">
+                                    <button class="btn-qty">-</button>
+                                    <span class="qty-num">0</span>
+                                    <button class="btn-qty">+</button>
+                                </div>
+                            </div>
+
+                            <div class="flavor-row">
+                                <span class="flavor-name">🥮 咖啡</span>
+                                <div class="qty-picker">
+                                    <button class="btn-qty">-</button>
+                                    <span class="qty-num">0</span>
+                                    <button class="btn-qty">+</button>
+                                </div>
+                            </div>
+
+                            <div class="flavor-row">
+                                <span class="flavor-name">🥮 白豆蓉</span>
+                                <div class="qty-picker">
+                                    <button class="btn-qty">-</button>
+                                    <span class="qty-num">0</span>
+                                    <button class="btn-qty">+</button>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="flavor-row">
-                            <span class="flavor-name">🥮 玫瑰豆沙</span>
-                            <div class="qty-picker">
-                                <button class="btn-qty">-</button>
-                                <span class="qty-num">0</span>
-                                <button class="btn-qty">+</button>
-                            </div>
-                        </div>
-
-                        <div class="flavor-row">
-                            <span class="flavor-name">🥮 咖啡</span>
-                            <div class="qty-picker">
-                                <button class="btn-qty">-</button>
-                                <span class="qty-num">0</span>
-                                <button class="btn-qty">+</button>
-                            </div>
-                        </div>
-
-                        <div class="flavor-row">
-                            <span class="flavor-name">🥮 白豆蓉</span>
-                            <div class="qty-picker">
-                                <button class="btn-qty">-</button>
-                                <span class="qty-num">0</span>
-                                <button class="btn-qty">+</button>
-                            </div>
-                        </div>
+                        <a href="https://wa.me/60123456789?text=你好！我想预订月里人家【传统月饼 4粒装 (RM28.00)】" target="_blank" class="btn-add-cart">Add to Cart</a>
                     </div>
-
-                    <a href="https://wa.me/60123456789?text=你好！我想预订月里人家【传统月饼 4粒装 (RM28.00)】" target="_blank" class="btn-add-cart">Add to Cart</a>
                 </div>
-            </div>
 
-            <!-- 商品 2：传统月饼 (1 Box / 6 pcs) -->
-            <div class="card">
-                <div class="card-img-container">
-                    <img src="images/mooncake1.jpg" alt="月里人家传统月饼 6粒装" onerror="this.src='logo.jpg'">
-                </div>
-                <div class="card-body">
-                    <h3 class="product-name">传统月饼 (1 Box / 6 pcs)</h3>
-                    <p class="product-desc">自家精心熬煮馅料，皮薄馅靓，每盒任选 6 粒。</p>
-                    <div class="price-text">RM 40.00 / Box</div>
-                    
-                    <div class="flavor-section">
-                        <p class="flavor-tip">任选 6 粒口味 (Total: 0/6):</p>
+                <div class="card">
+                    <div class="card-img-container">
+                        <img src="images/mooncake1.jpg" alt="月里人家传统月饼 6粒装" onerror="this.src='logo.jpg'">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="product-name">传统月饼 (1 Box / 6 pcs)</h3>
+                        <p class="product-desc">自家精心熬煮馅料，皮薄馅靓，每盒任选 6 粒。</p>
+                        <div class="price-text">RM 40.00 / Box</div>
                         
-                        <div class="flavor-row">
-                            <span class="flavor-name">🥮 翡翠豆蓉</span>
-                            <div class="qty-picker">
-                                <button class="btn-qty">-</button>
-                                <span class="qty-num">0</span>
-                                <button class="btn-qty">+</button>
+                        <div class="flavor-section">
+                            <p class="flavor-tip">任选 6 粒口味 (Total: 0/6):</p>
+                            
+                            <div class="flavor-row">
+                                <span class="flavor-name">🥮 翡翠豆蓉</span>
+                                <div class="qty-picker">
+                                    <button class="btn-qty">-</button>
+                                    <span class="qty-num">0</span>
+                                    <button class="btn-qty">+</button>
+                                </div>
+                            </div>
+
+                            <div class="flavor-row">
+                                <span class="flavor-name">🥮 玫瑰豆沙</span>
+                                <div class="qty-picker">
+                                    <button class="btn-qty">-</button>
+                                    <span class="qty-num">0</span>
+                                    <button class="btn-qty">+</button>
+                                </div>
+                            </div>
+
+                            <div class="flavor-row">
+                                <span class="flavor-name">🥮 咖啡</span>
+                                <div class="qty-picker">
+                                    <button class="btn-qty">-</button>
+                                    <span class="qty-num">0</span>
+                                    <button class="btn-qty">+</button>
+                                </div>
+                            </div>
+
+                            <div class="flavor-row">
+                                <span class="flavor-name">🥮 白豆蓉</span>
+                                <div class="qty-picker">
+                                    <button class="btn-qty">-</button>
+                                    <span class="qty-num">0</span>
+                                    <button class="btn-qty">+</button>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="flavor-row">
-                            <span class="flavor-name">🥮 玫瑰豆沙</span>
-                            <div class="qty-picker">
-                                <button class="btn-qty">-</button>
-                                <span class="qty-num">0</span>
-                                <button class="btn-qty">+</button>
-                            </div>
-                        </div>
-
-                        <div class="flavor-row">
-                            <span class="flavor-name">🥮 咖啡</span>
-                            <div class="qty-picker">
-                                <button class="btn-qty">-</button>
-                                <span class="qty-num">0</span>
-                                <button class="btn-qty">+</button>
-                            </div>
-                        </div>
-
-                        <div class="flavor-row">
-                            <span class="flavor-name">🥮 白豆蓉</span>
-                            <div class="qty-picker">
-                                <button class="btn-qty">-</button>
-                                <span class="qty-num">0</span>
-                                <button class="btn-qty">+</button>
-                            </div>
-                        </div>
+                        <a href="https://wa.me/60123456789?text=你好！我想预订月里人家【传统月饼 6粒装 (RM40.00)】" target="_blank" class="btn-add-cart">Add to Cart</a>
                     </div>
+                </div>
 
-                    <a href="https://wa.me/60123456789?text=你好！我想预订月里人家【传统月饼 6粒装 (RM40.00)】" target="_blank" class="btn-add-cart">Add to Cart</a>
+                <div class="card">
+                    <div class="card-img-container">
+                        <img src="images/mooncake2.jpg" alt="月里人家原味公仔饼" onerror="this.src='logo.jpg'">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="product-name">原味公仔饼</h3>
+                        <p class="product-desc">纯手工压模现烤，糖浆饼皮软糯香浓，传统住家滋味 (1 Box / 10 pcs)。</p>
+                        <div class="price-text">RM 11.00 / Box</div>
+                        
+                        <div class="single-qty-box">
+                            <div class="qty-picker main-picker">
+                                <button class="btn-qty">-</button>
+                                <span class="qty-num">1</span>
+                                <button class="btn-qty">+</button>
+                            </div>
+                        </div>
+
+                        <a href="https://wa.me/60123456789?text=你好！我想预订月里人家【原味公仔饼 (RM11.00/10pcs)】" target="_blank" class="btn-add-cart">Add to Cart</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 块 3: 预订与配送说明区 -->
+        <section class="block-section delivery-section">
+            <div class="section-header">
+                <h2>🚗 预订与配送说明</h2>
+            </div>
+            <div class="info-content">
+                <div class="info-item">
+                    <span class="info-icon">📌</span>
+                    <div>
+                        <h4>预订模式</h4>
+                        <p>纯手工住家烘焙，无现货，请提前 2-3 天预订。</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <span class="info-icon">🚚</span>
+                    <div>
+                        <h4>配送方式</h4>
+                        <p>提供指定区域面交 / Grab / Lalamove 派送。</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <span class="info-icon">📦</span>
+                    <div>
+                        <h4>保存期限</h4>
+                        <p>无添加防腐剂，常温可保存 7-10 天。</p>
+                    </div>
                 </div>
             </div>
+        </section>
 
-            <!-- 商品 3：原味公仔饼 -->
-            <div class="card">
-                <div class="card-img-container">
-                    <img src="images/mooncake2.jpg" alt="月里人家原味公仔饼" onerror="this.src='logo.jpg'">
-                </div>
-                <div class="card-body">
-                    <h3 class="product-name">原味公仔饼</h3>
-                    <p class="product-desc">纯手工压模现烤，糖浆饼皮软糯香浓，传统住家滋味 (1 Box / 10 pcs)。</p>
-                    <div class="price-text">RM 11.00 / Box</div>
-                    
-                    <div class="single-qty-box">
-                        <div class="qty-picker main-picker">
-                            <button class="btn-qty">-</button>
-                            <span class="qty-num">1</span>
-                            <button class="btn-qty">+</button>
-                        </div>
-                    </div>
-
-                    <a href="https://wa.me/60123456789?text=你好！我想预订月里人家【原味公仔饼 (RM11.00/10pcs)】" target="_blank" class="btn-add-cart">Add to Cart</a>
-                </div>
+        <!-- 块 4: 关于我们 (About Us) 品牌故事区 -->
+        <section class="block-section about-section">
+            <div class="section-header">
+                <h2>🏡 关于「月里人家」</h2>
             </div>
+            <p class="about-text">
+                “月里人家”源自对传统滋味的坚持。我们坚持使用纯手工制作每一颗月饼，严选优质食材，少油减糖，为你与家人在团圆佳节带来一份安心、温馨且道地的好滋味。
+            </p>
+        </section>
 
-        </main>
-    </section>
+    </div>
 
-    <!-- 4. 配送与预订说明 (Delivery / Pre-order) -->
-    <section class="info-section">
-        <div class="info-card">
-            <h3>🚗 预订与配送说明 (Delivery & Pre-order)</h3>
-            <ul class="info-list">
-                <li>📌 <strong>预订模式：</strong>纯手工住家烘焙，无现货，请提前 2-3 天预订。</li>
-                <li>🚚 <strong>配送方式：</strong>提供指定区域面交 / Grab / Lalamove 派送。</li>
-                <li>📦 <strong>保存期限：</strong>无添加防腐剂，常温可保存 7-10 天。</li>
-            </ul>
-        </div>
-    </section>
-
-    <!-- 5. 关于我们 (About Us) -->
-    <section class="info-section">
-        <div class="info-card about-card">
-            <h3>🏡 关于「月里人家」</h3>
-            <p>“月里人家”源自对传统滋味的坚持。我们坚持使用纯手工制作每一颗月饼，严选优质食材，少油减糖，为你与家人在团圆佳节带来一份安心、温馨且道地的好滋味。</p>
-        </div>
-    </section>
-
-    <!-- 右下角悬浮购物车图标 -->
     <a href="https://wa.me/60123456789?text=你好！我想预订月里人家月饼" target="_blank" class="floating-cart">
         🛒 <span class="cart-count">0</span>
     </a>
