@@ -1,107 +1,226 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>月里人家 | 纯手工住家月饼 yuelirenjia.mooncake</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+/* 还原参考图：灰底、白卡片、泥棕色按钮、精细字号与间距 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+}
 
-    <!-- 极简 Header -->
-    <header class="sb-header">
-        <div class="header-container">
-            <img src="logo.jpg" alt="月里人家 Logo" class="brand-avatar">
-            <div class="brand-info">
-                <h1 class="brand-title">月里人家 <span class="badge-home">🏡 纯手工住家</span></h1>
-                <p class="brand-handle">yuelirenjia.mooncake</p>
-                <p class="brand-desc">🥮 传统手艺 · 减糖低脂配方 · 每日限量新鲜出炉</p>
-            </div>
-        </div>
-    </header>
+body {
+    background-color: #f4f3f1; /* 参考图背景淡灰 */
+    color: #333333;
+    padding: 20px 10px;
+}
 
-    <!-- 商品列表区 -->
-    <main class="sb-container">
-        
-        <!-- 商品 1：传统月饼礼盒（含规格与口味选择视窗） -->
-        <div class="product-card">
-            <div class="product-img-box">
-                <img src="images/mooncake1.jpg" alt="手工传统月饼" onerror="this.src='logo.jpg'">
-                <span class="tag-gold">🥮 招牌必点</span>
-            </div>
-            <div class="product-info">
-                <h2 class="title">手工传统月饼礼盒</h2>
-                <p class="subtitle">自家精心熬煮馅料，皮薄馅靓，传承经典住家滋味。</p>
-                
-                <!-- 交互视窗：规格与口味选择 -->
-                <div class="option-box">
-                    <label class="option-title">1. 选择包装规格：</label>
-                    <div class="radio-group">
-                        <label class="radio-btn"><input type="radio" name="size" value="4粒装 (RM 28.00)" checked> 4粒装 · RM 28.00</label>
-                        <label class="radio-btn"><input type="radio" name="size" value="6粒装 (RM 40.00)"> 6粒装 · RM 40.00</label>
-                    </div>
+/* 顶部品牌区 */
+.store-header {
+    max-width: 1400px;
+    margin: 0 auto 20px;
+    background: #ffffff;
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
 
-                    <label class="option-title">2. 任选搭配口味（可在 WhatsApp 备注）：</label>
-                    <div class="checkbox-group">
-                        <span class="chip">白莲蓉</span>
-                        <span class="chip">单黄白莲蓉</span>
-                        <span class="chip">双黄白莲蓉</span>
-                        <span class="chip">豆沙</span>
-                        <span class="chip">五仁</span>
-                    </div>
-                </div>
+.brand-box {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
 
-                <div class="card-footer">
-                    <div class="price-display">
-                        <span class="price-label">售价：</span>
-                        <span class="price-amount">RM 28.00 <small>起</small></span>
-                    </div>
-                    <a href="https://wa.me/60123456789?text=你好！我想预订【手工传统月饼礼盒】" target="_blank" class="btn-wa">
-                        💬 选好口味，联系预订
-                    </a>
-                </div>
-            </div>
-        </div>
+.brand-logo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
 
-        <!-- 商品 2：原味公仔饼 -->
-        <div class="product-card">
-            <div class="product-img-box">
-                <img src="images/mooncake2.jpg" alt="原味公仔饼" onerror="this.src='logo.jpg'">
-                <span class="tag-gold">✨ 童年记忆</span>
-            </div>
-            <div class="product-info">
-                <h2 class="title">传统原味公仔饼</h2>
-                <p class="subtitle">香浓糖浆饼皮，软糯口感，纯正无添加，老少皆宜的传统小吃。</p>
-                
-                <div class="option-box compact">
-                    <span class="spec-tag">📦 规格：一包 10 粒装</span>
-                    <span class="spec-tag">🏡 特色：纯手工压模现烤</span>
-                </div>
+.brand-title {
+    font-size: 1.2rem;
+    color: #222;
+}
 
-                <div class="card-footer">
-                    <div class="price-display">
-                        <span class="price-label">售价：</span>
-                        <span class="price-amount">RM 11.00 <small>/ 10pcs</small></span>
-                    </div>
-                    <a href="https://wa.me/60123456789?text=你好！我想预订：原味公仔饼 (RM11 / 10pcs)" target="_blank" class="btn-wa">
-                        💬 WhatsApp 预订
-                    </a>
-                </div>
-            </div>
-        </div>
+.brand-sub {
+    font-size: 0.8rem;
+    color: #777;
+}
 
-    </main>
+/* 网格布局：PC端多列平铺，手机端自动适应 */
+.product-grid {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 15px;
+    align-items: start;
+}
 
-    <!-- 底部快捷按钮 -->
-    <div class="sticky-footer">
-        <a href="https://wa.me/60123456789?text=你好！我想咨询/预订月里人家的月饼" target="_blank" class="sticky-btn">
-            💬 联系 WhatsApp 快速下单
-        </a>
-    </div>
+/* 白卡片基本设定 */
+.card {
+    background: #ffffff;
+    border-radius: 4px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
 
-    <footer class="site-footer">
-        <p>© 2026 月里人家 yuelirenjia.mooncake | 纯手工住家滋味</p>
-    </footer>
+.card-img-container {
+    width: 100%;
+    padding-top: 75%; /* 正方形/4:3 比例 */
+    position: relative;
+    background: #eee;
+}
 
-</body>
-</html>
+.card-img-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.product-name {
+    font-size: 1.05rem;
+    font-weight: bold;
+    color: #222222;
+    margin-bottom: 6px;
+}
+
+.product-desc {
+    font-size: 0.82rem;
+    color: #777777;
+    line-height: 1.4;
+    margin-bottom: 12px;
+    min-height: 34px;
+}
+
+.price-text {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #222222;
+    margin-bottom: 12px;
+}
+
+/* 口味细分区域 */
+.flavor-section {
+    margin-bottom: 15px;
+}
+
+.flavor-tip {
+    font-size: 0.78rem;
+    color: #666666;
+    margin-bottom: 8px;
+}
+
+.flavor-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.flavor-name {
+    font-size: 0.82rem;
+    color: #444444;
+}
+
+/* 加减按钮控制器 (完全还原图中样式) */
+.qty-picker {
+    display: flex;
+    align-items: center;
+    border: 1px solid #d1d1d1;
+    border-radius: 4px;
+    background: #ffffff;
+    overflow: hidden;
+}
+
+.btn-qty {
+    background: #f8f8f8;
+    border: none;
+    width: 26px;
+    height: 26px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    color: #333;
+}
+
+.btn-qty:hover {
+    background: #e2e2e2;
+}
+
+.qty-num {
+    padding: 0 10px;
+    font-size: 0.82rem;
+    font-weight: bold;
+}
+
+.single-qty-box {
+    margin-bottom: 15px;
+}
+
+.main-picker {
+    width: fit-content;
+}
+
+/* 核心：泥棕色 Add to Cart 按钮 (完全1:1配色) */
+.btn-add-cart {
+    margin-top: auto;
+    background: #54433a; /* 参考图中的泥棕色 */
+    color: #ffffff;
+    text-align: center;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    display: block;
+    transition: background 0.2s;
+}
+
+.btn-add-cart:hover {
+    background: #3e312a;
+}
+
+/* 右下角悬浮购物车 */
+.floating-cart {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #54433a;
+    color: #ffffff;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    font-size: 1.2rem;
+    z-index: 1000;
+}
+
+.cart-count {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    background: #ffffff;
+    color: #54433a;
+    font-size: 0.7rem;
+    font-weight: bold;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
