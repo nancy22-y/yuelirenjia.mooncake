@@ -1,98 +1,98 @@
-/* Sweetbites 极简白灰底色 + 柔和新中式金色点缀 */
+/* =========================================================
+   月里人家 (yuelirenjia.mooncake)
+   极简 Orderla 电商风格 + 新中式月饼元素
+   ========================================================= */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", sans-serif;
 }
 
+/* 全局背景：极简灰色调，融入淡雅的中秋月影元素 */
 body {
-    background-color: #f7f7f8;
+    background-color: #f5f4f0;
+    background-image: radial-gradient(#e2dec9 0.8px, transparent 0.8px);
+    background-size: 24px 24px; /* 隐约的月芒点阵纹理 */
     color: #2c2c2c;
-    line-height: 1.5;
-    padding-bottom: 75px;
+    padding: 20px 12px 80px;
 }
 
-.sb-container {
-    max-width: 680px;
-    margin: 20px auto;
-    padding: 0 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-}
-
-/* Header 样式 */
-.sb-header {
+/* 顶部品牌区：极简风格结合新中式金边 */
+.store-header {
+    max-width: 1400px;
+    margin: 0 auto 24px;
     background: #ffffff;
-    border-bottom: 1px solid #eaeaea;
-    padding: 20px 16px;
+    padding: 16px 20px;
+    border-radius: 12px;
+    border: 1px solid #e8e2d5;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
 }
 
-.header-container {
-    max-width: 680px;
-    margin: 0 auto;
+.brand-box {
     display: flex;
     align-items: center;
     gap: 16px;
 }
 
-.brand-avatar {
-    width: 72px;
-    height: 72px;
+.brand-logo {
+    width: 52px;
+    height: 52px;
     border-radius: 50%;
     object-fit: cover;
-    border: 2px solid #d4af37;
-    flex-shrink: 0;
+    border: 2px solid #d4af37; /* 香槟金点缀 */
 }
 
 .brand-title {
     font-size: 1.25rem;
-    color: #111;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    flex-wrap: wrap;
+    color: #1a1a1a;
+    font-weight: 700;
+    letter-spacing: 0.5px;
 }
 
-.badge-home {
-    font-size: 0.75rem;
-    background: #fff8e7;
-    color: #b8860b;
-    border: 1px solid #f3e5ab;
-    padding: 2px 8px;
-    border-radius: 12px;
-    font-weight: normal;
+.brand-sub {
+    font-size: 0.8rem;
+    color: #888888;
 }
 
-.brand-handle {
-    font-size: 0.82rem;
-    color: #888;
-    margin-bottom: 4px;
+/* 商品平铺网格：PC端多列平铺，手机端自动切为双列/单列 */
+.product-grid {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 18px;
+    align-items: start;
 }
 
-.brand-desc {
-    font-size: 0.82rem;
-    color: #555;
-}
-
-/* 卡片排版 */
-.product-card {
+/* 单个商品卡片 */
+.card {
     background: #ffffff;
-    border-radius: 16px;
-    border: 1px solid #eaeaea;
+    border-radius: 10px;
+    border: 1px solid #e9e5dd;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
     overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.product-img-box {
-    position: relative;
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+    border-color: #c8b282;
+}
+
+/* 图片区域 */
+.card-img-container {
     width: 100%;
-    padding-top: 60%;
-    background: #f0f0f0;
+    padding-top: 75%; /* 4:3 比例 */
+    position: relative;
+    background: #f0ede6;
 }
 
-.product-img-box img {
+.card-img-container img {
     position: absolute;
     top: 0;
     left: 0;
@@ -101,167 +101,162 @@ body {
     object-fit: cover;
 }
 
-.tag-gold {
-    position: absolute;
-    top: 12px;
-    left: 12px;
-    background: rgba(255, 255, 255, 0.95);
-    color: #b8860b;
-    font-size: 0.75rem;
-    font-weight: bold;
-    padding: 4px 10px;
-    border-radius: 12px;
+/* 卡片内容区 */
+.card-body {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 }
 
-.product-info {
-    padding: 18px;
+.product-name {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 6px;
 }
 
-.title {
-    font-size: 1.15rem;
-    color: #111111;
-}
-
-.subtitle {
-    font-size: 0.85rem;
+.product-desc {
+    font-size: 0.82rem;
     color: #666666;
-    margin: 6px 0 14px;
+    line-height: 1.4;
+    margin-bottom: 12px;
+    min-height: 34px;
 }
 
-/* 可选口味视窗设计 */
-.option-box {
-    background: #fafafa;
-    border: 1px solid #eeeeee;
-    border-radius: 12px;
-    padding: 12px 14px;
+.price-text {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #8c2a1c; /* 蕴含传统氛围的深朱红 */
+    margin-bottom: 14px;
+}
+
+/* 口味细分选择区 */
+.flavor-section {
+    background: #faf8f5;
+    border: 1px solid #f0eae1;
+    border-radius: 8px;
+    padding: 10px;
     margin-bottom: 16px;
 }
 
-.option-box.compact {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
+.flavor-tip {
+    font-size: 0.78rem;
+    color: #666666;
+    font-weight: 600;
+    margin-bottom: 8px;
 }
 
-.option-title {
-    display: block;
-    font-size: 0.8rem;
-    font-weight: bold;
-    color: #444;
-    margin-bottom: 6px;
-    margin-top: 6px;
-}
-
-.option-title:first-child {
-    margin-top: 0;
-}
-
-.radio-group {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 10px;
-    flex-wrap: wrap;
-}
-
-.radio-btn {
-    font-size: 0.8rem;
-    background: #ffffff;
-    border: 1px solid #ddd;
-    padding: 6px 12px;
-    border-radius: 8px;
-    cursor: pointer;
-    color: #333;
-}
-
-.checkbox-group {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-}
-
-.chip {
-    font-size: 0.75rem;
-    background: #ffffff;
-    color: #b8860b;
-    border: 1px solid #f0e6c2;
-    padding: 3px 8px;
-    border-radius: 6px;
-}
-
-.spec-tag {
-    font-size: 0.8rem;
-    color: #555;
-    background: #ffffff;
-    border: 1px solid #e0e0e0;
-    padding: 4px 10px;
-    border-radius: 6px;
-}
-
-/* 卡片底部 */
-.card-footer {
+.flavor-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-top: 1px solid #f0f0f0;
-    padding-top: 14px;
+    margin-bottom: 8px;
 }
 
-.price-label {
-    font-size: 0.8rem;
-    color: #888;
+.flavor-row:last-child {
+    margin-bottom: 0;
 }
 
-.price-amount {
-    font-size: 1.25rem;
-    font-weight: bold;
-    color: #c0392b;
+.flavor-name {
+    font-size: 0.82rem;
+    color: #333333;
 }
 
-.price-amount small {
-    font-size: 0.75rem;
-    color: #888;
-    font-weight: normal;
-}
-
-.btn-wa {
-    background: #25d366;
-    color: #ffffff;
-    text-decoration: none;
-    padding: 8px 16px;
-    border-radius: 20px;
-    font-size: 0.85rem;
-    font-weight: bold;
-}
-
-/* 底部悬浮条 */
-.sticky-footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
+/* 数量加减微调器 */
+.qty-picker {
+    display: flex;
+    align-items: center;
+    border: 1px solid #d8d3c8;
+    border-radius: 4px;
     background: #ffffff;
-    border-top: 1px solid #eaeaea;
-    padding: 10px 16px;
-    z-index: 100;
+    overflow: hidden;
 }
 
-.sticky-btn {
-    display: block;
-    max-width: 680px;
-    margin: 0 auto;
-    background: #25d366;
+.btn-qty {
+    background: #f5f2eb;
+    border: none;
+    width: 26px;
+    height: 26px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    color: #444444;
+    transition: background 0.15s;
+}
+
+.btn-qty:hover {
+    background: #e5dfd3;
+}
+
+.qty-num {
+    padding: 0 10px;
+    font-size: 0.82rem;
+    font-weight: bold;
+    color: #222222;
+}
+
+.single-qty-box {
+    margin-bottom: 16px;
+}
+
+.main-picker {
+    width: fit-content;
+}
+
+/* 经典 Orderla 泥棕色满宽按钮 (融入温和棕金感) */
+.btn-add-cart {
+    margin-top: auto;
+    background: #4a3b32;
     color: #ffffff;
     text-align: center;
     text-decoration: none;
     padding: 11px;
-    border-radius: 22px;
-    font-weight: bold;
-    font-size: 0.9rem;
+    border-radius: 6px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    display: block;
+    border: 1px solid #3d3029;
+    transition: background 0.2s, border-color 0.2s;
 }
 
-.site-footer {
-    text-align: center;
-    font-size: 0.75rem;
-    color: #aaa;
-    margin-top: 20px;
+.btn-add-cart:hover {
+    background: #332822;
+    border-color: #261e19;
+}
+
+/* 右下角悬浮购物车图标 */
+.floating-cart {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: #4a3b32;
+    color: #ffffff;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    border: 2px solid #d4af37; /* 金色边框凸显品牌质感 */
+    font-size: 1.2rem;
+    z-index: 1000;
+}
+
+.cart-count {
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    background: #8c2a1c;
+    color: #ffffff;
+    font-size: 0.7rem;
+    font-weight: bold;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ffffff;
 }
