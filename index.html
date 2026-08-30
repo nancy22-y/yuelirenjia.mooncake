@@ -3,105 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>月里人家 | yuelirenjia.mooncake</title>
+    <title>月里人家 | 纯手工住家月饼 yuelirenjia.mooncake</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Header 头部个人资料 -->
-    <header class="sb-profile">
-        <div class="profile-container">
-            <img src="logo.jpg" alt="月里人家 Logo" class="profile-img">
-            <div class="profile-info">
-                <h1 class="brand-title">月里人家 <span class="v-badge">✓</span></h1>
+    <!-- 极简 Header -->
+    <header class="sb-header">
+        <div class="header-container">
+            <img src="logo.jpg" alt="月里人家 Logo" class="brand-avatar">
+            <div class="brand-info">
+                <h1 class="brand-title">月里人家 <span class="badge-home">🏡 纯手工住家</span></h1>
                 <p class="brand-handle">yuelirenjia.mooncake</p>
-                <p class="brand-bio">
-                    🏡 纯手工住家烘焙 · 严选优质食材<br>
-                    🥮 减糖低脂配方 · 每日新鲜出炉<br>
-                    📍 预订即送精品中式礼盒
-                </p>
+                <p class="brand-desc">🥮 传统手艺 · 减糖低脂配方 · 每日限量新鲜出炉</p>
             </div>
-        </div>
-        <div class="profile-action">
-            <a href="https://wa.me/60123456789?text=你好！我想预订月里人家的手工月饼" target="_blank" class="btn-main-wa">
-                💬 立即联系 WhatsApp 下单
-            </a>
         </div>
     </header>
 
-    <!-- 分类导航 -->
-    <nav class="cat-nav">
-        <a href="#all" class="cat-link active">全部月饼</a>
-        <a href="#classic" class="cat-link">传统烘焙</a>
-        <a href="#gift" class="cat-link">中秋礼盒</a>
-    </nav>
+    <!-- 商品列表区 -->
+    <main class="sb-container">
+        
+        <!-- 商品 1：传统月饼礼盒（含规格与口味选择视窗） -->
+        <div class="product-card">
+            <div class="product-img-box">
+                <img src="images/mooncake1.jpg" alt="手工传统月饼" onerror="this.src='logo.jpg'">
+                <span class="tag-gold">🥮 招牌必点</span>
+            </div>
+            <div class="product-info">
+                <h2 class="title">手工传统月饼礼盒</h2>
+                <p class="subtitle">自家精心熬煮馅料，皮薄馅靓，传承经典住家滋味。</p>
+                
+                <!-- 交互视窗：规格与口味选择 -->
+                <div class="option-box">
+                    <label class="option-title">1. 选择包装规格：</label>
+                    <div class="radio-group">
+                        <label class="radio-btn"><input type="radio" name="size" value="4粒装 (RM 28.00)" checked> 4粒装 · RM 28.00</label>
+                        <label class="radio-btn"><input type="radio" name="size" value="6粒装 (RM 40.00)"> 6粒装 · RM 40.00</label>
+                    </div>
 
-    <!-- 主体商品展示 -->
-    <main class="container">
-        <section class="product-list">
-
-            <!-- 商品 1 -->
-            <div class="sb-card">
-                <div class="img-container">
-                    <img src="images/mooncake1.jpg" alt="招牌双黄白莲蓉" onerror="this.src='logo.jpg'">
-                    <span class="badge-hot">🔥 热销推荐</span>
-                </div>
-                <div class="card-content">
-                    <h3 class="product-title">招牌双黄白莲蓉</h3>
-                    <p class="product-sub">自家精心熬煮莲蓉，清甜不腻，搭配两颗沙软油润咸蛋黄。</p>
-                    <div class="card-price-row">
-                        <span class="price-symbol">RM <span class="price-num">18.00</span> / 粒</span>
-                        <a href="https://wa.me/60123456789?text=我想预订：招牌双黄白莲蓉" target="_blank" class="btn-add">下单预订</a>
+                    <label class="option-title">2. 任选搭配口味（可在 WhatsApp 备注）：</label>
+                    <div class="checkbox-group">
+                        <span class="chip">白莲蓉</span>
+                        <span class="chip">单黄白莲蓉</span>
+                        <span class="chip">双黄白莲蓉</span>
+                        <span class="chip">豆沙</span>
+                        <span class="chip">五仁</span>
                     </div>
                 </div>
-            </div>
 
-            <!-- 商品 2 -->
-            <div class="sb-card">
-                <div class="img-container">
-                    <img src="images/mooncake2.jpg" alt="金沙流心奶黄" onerror="this.src='logo.jpg'">
-                    <span class="badge-new">✨ 人气网红</span>
-                </div>
-                <div class="card-content">
-                    <h3 class="product-title">金沙流心奶黄</h3>
-                    <p class="product-sub">浓郁奶香与咸香蛋黄完美结合，切开即流心，口感极其丝滑。</p>
-                    <div class="card-price-row">
-                        <span class="price-symbol">RM <span class="price-num">22.00</span> / 粒</span>
-                        <a href="https://wa.me/60123456789?text=我想预订：金沙流心奶黄" target="_blank" class="btn-add">下单预订</a>
+                <div class="card-footer">
+                    <div class="price-display">
+                        <span class="price-label">售价：</span>
+                        <span class="price-amount">RM 28.00 <small>起</small></span>
                     </div>
+                    <a href="https://wa.me/60123456789?text=你好！我想预订【手工传统月饼礼盒】" target="_blank" class="btn-wa">
+                        💬 选好口味，联系预订
+                    </a>
                 </div>
             </div>
+        </div>
 
-            <!-- 商品 3 -->
-            <div class="sb-card">
-                <div class="img-container">
-                    <img src="images/mooncake3.jpg" alt="尊享中秋礼盒" onerror="this.src='logo.jpg'">
-                    <span class="badge-gift">🎁 送礼首选</span>
+        <!-- 商品 2：原味公仔饼 -->
+        <div class="product-card">
+            <div class="product-img-box">
+                <img src="images/mooncake2.jpg" alt="原味公仔饼" onerror="this.src='logo.jpg'">
+                <span class="tag-gold">✨ 童年记忆</span>
+            </div>
+            <div class="product-info">
+                <h2 class="title">传统原味公仔饼</h2>
+                <p class="subtitle">香浓糖浆饼皮，软糯口感，纯正无添加，老少皆宜的传统小吃。</p>
+                
+                <div class="option-box compact">
+                    <span class="spec-tag">📦 规格：一包 10 粒装</span>
+                    <span class="spec-tag">🏡 特色：纯手工压模现烤</span>
                 </div>
-                <div class="card-content">
-                    <h3 class="product-title">「月里人家」尊享礼盒</h3>
-                    <p class="product-sub">内含 4 款招牌口味月饼，配套典雅国风礼盒与精致提袋。</p>
-                    <div class="card-price-row">
-                        <span class="price-symbol">RM <span class="price-num">88.00</span> / 盒</span>
-                        <a href="https://wa.me/60123456789?text=我想预订：「月里人家」尊享礼盒" target="_blank" class="btn-add">下单预订</a>
+
+                <div class="card-footer">
+                    <div class="price-display">
+                        <span class="price-label">售价：</span>
+                        <span class="price-amount">RM 11.00 <small>/ 10pcs</small></span>
                     </div>
+                    <a href="https://wa.me/60123456789?text=你好！我想预订：原味公仔饼 (RM11 / 10pcs)" target="_blank" class="btn-wa">
+                        💬 WhatsApp 预订
+                    </a>
                 </div>
             </div>
+        </div>
 
-        </section>
     </main>
 
-    <!-- 手机端底部悬浮栏 -->
-    <div class="mobile-sticky-bar">
-        <a href="https://wa.me/60123456789?text=你好！我想咨询/预订月饼" target="_blank" class="sticky-btn">
-            💬 联系卖家 / WhatsApp 快速下单
+    <!-- 底部快捷按钮 -->
+    <div class="sticky-footer">
+        <a href="https://wa.me/60123456789?text=你好！我想咨询/预订月里人家的月饼" target="_blank" class="sticky-btn">
+            💬 联系 WhatsApp 快速下单
         </a>
     </div>
 
-    <!-- 页脚 -->
     <footer class="site-footer">
-        <p>© 2026 月里人家 yuelirenjia.mooncake</p>
-        <p>纯手工住家烘焙 · 传递最真的中秋温情</p>
+        <p>© 2026 月里人家 yuelirenjia.mooncake | 纯手工住家滋味</p>
     </footer>
 
 </body>
