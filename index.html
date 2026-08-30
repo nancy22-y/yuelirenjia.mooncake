@@ -8,9 +8,10 @@
 </head>
 <body>
 
+    <!-- 顶部品牌 Header -->
     <header class="store-header">
         <div class="brand-box">
-            <img src="logo.jpeg" alt="月里人家 Logo" class="brand-logo">
+            <img src="logo.jpg" alt="月里人家 Logo" class="brand-logo">
             <div>
                 <h1 class="brand-title">月里人家</h1>
                 <p class="brand-sub">yuelirenjia.mooncake · 纯手工住家烘焙</p>
@@ -20,10 +21,10 @@
 
     <div class="page-container">
 
-        <!-- Banner 区 -->
+        <!-- 1. Banner 区 -->
         <section class="block-section banner-section">
             <div class="banner-container">
-                <img src="logo.jpeg" alt="月里人家中秋宣传" class="banner-img">
+                <img src="logo.jpg" alt="月里人家中秋宣传" class="banner-img">
                 <div class="banner-overlay">
                     <h2>月里人家 · 团圆之味</h2>
                     <p>🥮 纯手工住家烘焙 | 减糖低脂配方 | 每日限量新鲜出炉</p>
@@ -31,11 +32,11 @@
             </div>
         </section>
 
-        <!-- 产品区 -->
+        <!-- 2. 产品区 -->
         <section class="block-section product-section">
             <div class="section-header">
                 <h2>🥮 精选手工月饼</h2>
-                <span class="section-sub">自由选择数量与口味加购</span>
+                <span class="section-sub">选择口味并凑满数量后加入购物车</span>
             </div>
 
             <div class="product-grid">
@@ -51,46 +52,46 @@
                         <div class="price-text">RM 28.00 / Box</div>
                         
                         <div class="flavor-section">
-                            <p class="flavor-tip">任选口味 (加减选购):</p>
+                            <p class="flavor-tip">任选口味 (已选 <span id="count_4pcs" class="limit-num">0</span>/4 粒):</p>
                             
                             <div class="flavor-row">
                                 <span class="flavor-name">🥮 翡翠豆蓉</span>
                                 <div class="qty-picker">
-                                    <button class="btn-qty" onclick="changeQty('4pcs_feicui', -1)">-</button>
+                                    <button class="btn-qty" onclick="adjustFlavor('4pcs', 'feicui', -1)">-</button>
                                     <span class="qty-num" id="qty_4pcs_feicui">0</span>
-                                    <button class="btn-qty" onclick="changeQty('4pcs_feicui', 1)">+</button>
+                                    <button class="btn-qty" onclick="adjustFlavor('4pcs', 'feicui', 1)">+</button>
                                 </div>
                             </div>
 
                             <div class="flavor-row">
                                 <span class="flavor-name">🥮 玫瑰豆沙</span>
                                 <div class="qty-picker">
-                                    <button class="btn-qty" onclick="changeQty('4pcs_dousha', -1)">-</button>
+                                    <button class="btn-qty" onclick="adjustFlavor('4pcs', 'dousha', -1)">-</button>
                                     <span class="qty-num" id="qty_4pcs_dousha">0</span>
-                                    <button class="btn-qty" onclick="changeQty('4pcs_dousha', 1)">+</button>
+                                    <button class="btn-qty" onclick="adjustFlavor('4pcs', 'dousha', 1)">+</button>
                                 </div>
                             </div>
 
                             <div class="flavor-row">
                                 <span class="flavor-name">🥮 咖啡</span>
                                 <div class="qty-picker">
-                                    <button class="btn-qty" onclick="changeQty('4pcs_coffee', -1)">-</button>
+                                    <button class="btn-qty" onclick="adjustFlavor('4pcs', 'coffee', -1)">-</button>
                                     <span class="qty-num" id="qty_4pcs_coffee">0</span>
-                                    <button class="btn-qty" onclick="changeQty('4pcs_coffee', 1)">+</button>
+                                    <button class="btn-qty" onclick="adjustFlavor('4pcs', 'coffee', 1)">+</button>
                                 </div>
                             </div>
 
                             <div class="flavor-row">
                                 <span class="flavor-name">🥮 白豆蓉</span>
                                 <div class="qty-picker">
-                                    <button class="btn-qty" onclick="changeQty('4pcs_baidourong', -1)">-</button>
+                                    <button class="btn-qty" onclick="adjustFlavor('4pcs', 'baidourong', -1)">-</button>
                                     <span class="qty-num" id="qty_4pcs_baidourong">0</span>
-                                    <button class="btn-qty" onclick="changeQty('4pcs_baidourong', 1)">+</button>
+                                    <button class="btn-qty" onclick="adjustFlavor('4pcs', 'baidourong', 1)">+</button>
                                 </div>
                             </div>
                         </div>
 
-                        <button class="btn-add-cart" onclick="addToCart('4pcs')">加入购物车</button>
+                        <button class="btn-add-cart" onclick="addBoxToCart('4pcs')">加入购物车</button>
                     </div>
                 </div>
 
@@ -105,46 +106,46 @@
                         <div class="price-text">RM 40.00 / Box</div>
                         
                         <div class="flavor-section">
-                            <p class="flavor-tip">任选口味 (加减选购):</p>
+                            <p class="flavor-tip">任选口味 (已选 <span id="count_6pcs" class="limit-num">0</span>/6 粒):</p>
                             
                             <div class="flavor-row">
                                 <span class="flavor-name">🥮 翡翠豆蓉</span>
                                 <div class="qty-picker">
-                                    <button class="btn-qty" onclick="changeQty('6pcs_feicui', -1)">-</button>
+                                    <button class="btn-qty" onclick="adjustFlavor('6pcs', 'feicui', -1)">-</button>
                                     <span class="qty-num" id="qty_6pcs_feicui">0</span>
-                                    <button class="btn-qty" onclick="changeQty('6pcs_feicui', 1)">+</button>
+                                    <button class="btn-qty" onclick="adjustFlavor('6pcs', 'feicui', 1)">+</button>
                                 </div>
                             </div>
 
                             <div class="flavor-row">
                                 <span class="flavor-name">🥮 玫瑰豆沙</span>
                                 <div class="qty-picker">
-                                    <button class="btn-qty" onclick="changeQty('6pcs_dousha', -1)">-</button>
+                                    <button class="btn-qty" onclick="adjustFlavor('6pcs', 'dousha', -1)">-</button>
                                     <span class="qty-num" id="qty_6pcs_dousha">0</span>
-                                    <button class="btn-qty" onclick="changeQty('6pcs_dousha', 1)">+</button>
+                                    <button class="btn-qty" onclick="adjustFlavor('6pcs', 'dousha', 1)">+</button>
                                 </div>
                             </div>
 
                             <div class="flavor-row">
                                 <span class="flavor-name">🥮 咖啡</span>
                                 <div class="qty-picker">
-                                    <button class="btn-qty" onclick="changeQty('6pcs_coffee', -1)">-</button>
+                                    <button class="btn-qty" onclick="adjustFlavor('6pcs', 'coffee', -1)">-</button>
                                     <span class="qty-num" id="qty_6pcs_coffee">0</span>
-                                    <button class="btn-qty" onclick="changeQty('6pcs_coffee', 1)">+</button>
+                                    <button class="btn-qty" onclick="adjustFlavor('6pcs', 'coffee', 1)">+</button>
                                 </div>
                             </div>
 
                             <div class="flavor-row">
                                 <span class="flavor-name">🥮 白豆蓉</span>
                                 <div class="qty-picker">
-                                    <button class="btn-qty" onclick="changeQty('6pcs_baidourong', -1)">-</button>
+                                    <button class="btn-qty" onclick="adjustFlavor('6pcs', 'baidourong', -1)">-</button>
                                     <span class="qty-num" id="qty_6pcs_baidourong">0</span>
-                                    <button class="btn-qty" onclick="changeQty('6pcs_baidourong', 1)">+</button>
+                                    <button class="btn-qty" onclick="adjustFlavor('6pcs', 'baidourong', 1)">+</button>
                                 </div>
                             </div>
                         </div>
 
-                        <button class="btn-add-cart" onclick="addToCart('6pcs')">加入购物车</button>
+                        <button class="btn-add-cart" onclick="addBoxToCart('6pcs')">加入购物车</button>
                     </div>
                 </div>
 
@@ -159,21 +160,22 @@
                         <div class="price-text">RM 11.00 / Box</div>
                         
                         <div class="single-qty-box">
+                            <label class="flavor-tip">选择买多少盒：</label>
                             <div class="qty-picker main-picker">
-                                <button class="btn-qty" onclick="changeQty('gongzai', -1)">-</button>
+                                <button class="btn-qty" onclick="adjustGongzai(-1)">-</button>
                                 <span class="qty-num" id="qty_gongzai">1</span>
-                                <button class="btn-qty" onclick="changeQty('gongzai', 1)">+</button>
+                                <button class="btn-qty" onclick="adjustGongzai(1)">+</button>
                             </div>
                         </div>
 
-                        <button class="btn-add-cart" onclick="addToCart('gongzai')">加入购物车</button>
+                        <button class="btn-add-cart" onclick="addGongzaiToCart()">加入购物车</button>
                     </div>
                 </div>
 
             </div>
         </section>
 
-        <!-- 配送说明区 -->
+        <!-- 3. 配送与说明区 -->
         <section class="block-section delivery-section">
             <div class="section-header">
                 <h2>🚗 预订与配送说明</h2>
@@ -203,7 +205,7 @@
             </div>
         </section>
 
-        <!-- 关于我们 -->
+        <!-- 4. 关于我们 -->
         <section class="block-section about-section">
             <div class="section-header">
                 <h2>🏡 关于「月里人家」</h2>
@@ -215,108 +217,130 @@
 
     </div>
 
-    <!-- 右下角悬浮购物车图标 -->
-    <div class="floating-cart" onclick="toggleCartModal()">
+    <!-- 右下角悬浮购物车触发图标 -->
+    <div class="floating-cart" onclick="openCart()">
         🛒 <span class="cart-count" id="cart-count">0</span>
     </div>
 
-    <!-- 购物车结算弹窗 (Checkout Modal) -->
-    <div class="modal-overlay" id="cart-modal">
-        <div class="modal-card">
-            <div class="modal-header">
-                <h3>🛒 你的购物清单 (Checkout)</h3>
-                <span class="close-btn" onclick="toggleCartModal()">×</span>
+    <!-- 右侧平滑滑出式购物车 (Side Drawer Cart) -->
+    <div class="drawer-overlay" id="drawer-overlay" onclick="closeCart()"></div>
+    <div class="side-drawer" id="side-drawer">
+        <div class="drawer-header">
+            <h3>🛒 我的购物车 (Checkout)</h3>
+            <span class="close-drawer" onclick="closeCart()">×</span>
+        </div>
+        <div class="drawer-body" id="drawer-body">
+            <p class="empty-text">购物车目前是空的，快去选购吧！</p>
+        </div>
+        <div class="drawer-footer">
+            <div class="total-row">
+                <span>总计金额 (Total):</span>
+                <span class="total-price" id="total-price">RM 0.00</span>
             </div>
-            <div class="modal-body" id="cart-items">
-                <p class="empty-msg">购物车目前是空的哦~</p>
-            </div>
-            <div class="modal-footer">
-                <div class="total-row">
-                    <span>总计 (Total):</span>
-                    <span class="total-price" id="total-price">RM 0.00</span>
-                </div>
-                <button class="btn-checkout-wa" onclick="checkoutToWhatsApp()">
-                    💬 发送订单至 WhatsApp 结算
-                </button>
-            </div>
+            <button class="btn-checkout-wa" onclick="checkoutToWhatsApp()">
+                💬 发送订单至 WhatsApp 结算
+            </button>
         </div>
     </div>
 
-    <!-- 交互逻辑 JS -->
+    <!-- JS 逻辑控制代码 -->
     <script>
-        // 存储加减数据
-        let counts = {
-            '4pcs_feicui': 0, '4pcs_dousha': 0, '4pcs_coffee': 0, '4pcs_baidourong': 0,
-            '6pcs_feicui': 0, '6pcs_dousha': 0, '6pcs_coffee': 0, '6pcs_baidourong': 0,
-            'gongzai': 1
+        const flavorNames = {
+            'feicui': '翡翠豆蓉',
+            'dousha': '玫瑰豆沙',
+            'coffee': '咖啡',
+            'baidourong': '白豆蓉'
         };
 
-        // 实际购物车商品数组
+        let flavors4 = { 'feicui': 0, 'dousha': 0, 'coffee': 0, 'baidourong': 0 };
+        let flavors6 = { 'feicui': 0, 'dousha': 0, 'coffee': 0, 'baidourong': 0 };
+        let gongzaiQty = 1;
+
         let cart = [];
 
-        function changeQty(id, delta) {
-            if (!counts[id]) counts[id] = 0;
-            counts[id] += delta;
-            if (counts[id] < 0) counts[id] = 0;
-            if (id === 'gongzai' && counts[id] < 1) counts[id] = 1;
-            document.getElementById('qty_' + id).innerText = counts[id];
-        }
+        function adjustFlavor(boxType, flavorKey, delta) {
+            let targetObj = (boxType === '4pcs') ? flavors4 : flavors6;
+            let maxLimit = (boxType === '4pcs') ? 4 : 6;
+            
+            let currentSum = Object.values(targetObj).reduce((a, b) => a + b, 0);
 
-        function addToCart(type) {
-            if (type === '4pcs') {
-                let flavors = [];
-                if (counts['4pcs_feicui'] > 0) flavors.push(`翡翠豆蓉 x${counts['4pcs_feicui']}`);
-                if (counts['4pcs_dousha'] > 0) flavors.push(`玫瑰豆沙 x${counts['4pcs_dousha']}`);
-                if (counts['4pcs_coffee'] > 0) flavors.push(`咖啡 x${counts['4pcs_coffee']}`);
-                if (counts['4pcs_baidourong'] > 0) flavors.push(`白豆蓉 x${counts['4pcs_baidourong']}`);
-
-                if (flavors.length === 0) {
-                    alert('请先选择口味数量哦！');
-                    return;
-                }
-                cart.push({
-                    name: '传统月饼 (4粒装)',
-                    details: flavors.join(', '),
-                    price: 28.00
-                });
-            } else if (type === '6pcs') {
-                let flavors = [];
-                if (counts['6pcs_feicui'] > 0) flavors.push(`翡翠豆蓉 x${counts['6pcs_feicui']}`);
-                if (counts['6pcs_dousha'] > 0) flavors.push(`玫瑰豆沙 x${counts['6pcs_dousha']}`);
-                if (counts['6pcs_coffee'] > 0) flavors.push(`咖啡 x${counts['6pcs_coffee']}`);
-                if (counts['6pcs_baidourong'] > 0) flavors.push(`白豆蓉 x${counts['6pcs_baidourong']}`);
-
-                if (flavors.length === 0) {
-                    alert('请先选择口味数量哦！');
-                    return;
-                }
-                cart.push({
-                    name: '传统月饼 (6粒装)',
-                    details: flavors.join(', '),
-                    price: 40.00
-                });
-            } else if (type === 'gongzai') {
-                let qty = counts['gongzai'];
-                cart.push({
-                    name: '原味公仔饼 (10粒装)',
-                    details: `数量: ${qty} 盒`,
-                    price: 11.00 * qty
-                });
+            if (delta > 0 && currentSum >= maxLimit) {
+                alert(`这盒最多只能选择 ${maxLimit} 粒月饼！`);
+                return;
             }
 
-            updateCartUI();
-            alert('已成功加入购物车！');
+            if (targetObj[flavorKey] + delta >= 0) {
+                targetObj[flavorKey] += delta;
+            }
+
+            document.getElementById(`qty_${boxType}_${flavorKey}`).innerText = targetObj[flavorKey];
+            
+            let newSum = Object.values(targetObj).reduce((a, b) => a + b, 0);
+            document.getElementById(`count_${boxType}`).innerText = newSum;
         }
 
-        function updateCartUI() {
+        function adjustGongzai(delta) {
+            if (gongzaiQty + delta >= 1) {
+                gongzaiQty += delta;
+                document.getElementById('qty_gongzai').innerText = gongzaiQty;
+            }
+        }
+
+        function addBoxToCart(boxType) {
+            let targetObj = (boxType === '4pcs') ? flavors4 : flavors6;
+            let limit = (boxType === '4pcs') ? 4 : 6;
+            let currentSum = Object.values(targetObj).reduce((a, b) => a + b, 0);
+
+            if (currentSum !== limit) {
+                alert(`请先选满 ${limit} 粒口味，再加入购物车（目前已选 ${currentSum}/${limit} 粒）`);
+                return;
+            }
+
+            let detailsArr = [];
+            for (let key in targetObj) {
+                if (targetObj[key] > 0) {
+                    detailsArr.push(`${flavorNames[key]} x${targetObj[key]}`);
+                }
+            }
+
+            cart.push({
+                title: `传统月饼 (${limit}粒装)`,
+                desc: detailsArr.join(', '),
+                price: (boxType === '4pcs') ? 28.00 : 40.00
+            });
+
+            // 重置已选数据
+            for (let key in targetObj) targetObj[key] = 0;
+            for (let key in targetObj) document.getElementById(`qty_${boxType}_${key}`).innerText = 0;
+            document.getElementById(`count_${boxType}`).innerText = 0;
+
+            updateCartDrawer();
+            openCart();
+        }
+
+        function addGongzaiToCart() {
+            cart.push({
+                title: '原味公仔饼',
+                desc: `10粒装 x ${gongzaiQty} 盒`,
+                price: 11.00 * gongzaiQty
+            });
+
+            gongzaiQty = 1;
+            document.getElementById('qty_gongzai').innerText = 1;
+
+            updateCartDrawer();
+            openCart();
+        }
+
+        function updateCartDrawer() {
             document.getElementById('cart-count').innerText = cart.length;
 
-            let itemsContainer = document.getElementById('cart-items');
-            let totalPriceEl = document.getElementById('total-price');
+            let body = document.getElementById('drawer-body');
+            let totalEl = document.getElementById('total-price');
 
             if (cart.length === 0) {
-                itemsContainer.innerHTML = '<p class="empty-msg">购物车目前是空的哦~</p>';
-                totalPriceEl.innerText = 'RM 0.00';
+                body.innerHTML = '<p class="empty-text">购物车目前是空的，快去选购吧！</p>';
+                totalEl.innerText = 'RM 0.00';
                 return;
             }
 
@@ -327,49 +351,53 @@
                 total += item.price;
                 html += `
                     <div class="cart-item">
-                        <div>
-                            <strong>${item.name}</strong>
-                            <p>${item.details}</p>
-                            <span class="item-price">RM ${item.price.toFixed(2)}</span>
+                        <div class="item-info">
+                            <h4>${item.title}</h4>
+                            <p>${item.desc}</p>
+                            <span class="price">RM ${item.price.toFixed(2)}</span>
                         </div>
-                        <button class="remove-btn" onclick="removeItem(${index})">删除</button>
+                        <button class="btn-del" onclick="removeFromCart(${index})">删除</button>
                     </div>
                 `;
             });
 
-            itemsContainer.innerHTML = html;
-            totalPriceEl.innerText = `RM ${total.toFixed(2)}`;
+            body.innerHTML = html;
+            totalEl.innerText = `RM ${total.toFixed(2)}`;
         }
 
-        function removeItem(index) {
+        function removeFromCart(index) {
             cart.splice(index, 1);
-            updateCartUI();
+            updateCartDrawer();
         }
 
-        function toggleCartModal() {
-            let modal = document.getElementById('cart-modal');
-            modal.style.display = (modal.style.display === 'flex') ? 'none' : 'flex';
+        function openCart() {
+            document.getElementById('side-drawer').classList.add('active');
+            document.getElementById('drawer-overlay').classList.add('active');
+        }
+
+        function closeCart() {
+            document.getElementById('side-drawer').classList.remove('active');
+            document.getElementById('drawer-overlay').classList.remove('active');
         }
 
         function checkoutToWhatsApp() {
             if (cart.length === 0) {
-                alert('购物车里还没有商品哦！');
+                alert('购物车是空的！');
                 return;
             }
 
-            let phone = "60123456789"; // 请替换为你的真实 WhatsApp 电话号码
-            let message = "你好！我想预订以下【月里人家】月饼：\n\n";
-            let total = 0;
+            let phone = "60123456789"; // 请修改为你的 WhatsApp 电话号码
+            let msg = "你好！我想预订以下【月里人家】月饼：\n\n";
+            let grandTotal = 0;
 
-            cart.forEach((item, index) => {
-                message += `${index + 1}. ${item.name}\n   ${item.details}\n   RM ${item.price.toFixed(2)}\n\n`;
-                total += item.price;
+            cart.forEach((item, i) => {
+                msg += `${i + 1}. ${item.title}\n   ${item.desc}\n   价格: RM ${item.price.toFixed(2)}\n\n`;
+                grandTotal += item.price;
             });
 
-            message += `--------------------\n总额 (Total): RM ${total.toFixed(2)}\n\n请帮我确认订单与发货时间！`;
+            msg += `--------------------\n订单总计 (Total): RM ${grandTotal.toFixed(2)}\n\n请帮我确认订单！`;
 
-            let waUrl = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-            window.open(waUrl, '_blank');
+            window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '_blank');
         }
     </script>
 </body>
