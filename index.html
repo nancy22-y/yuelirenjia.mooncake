@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>月里人家 | 纯手工住家月饼 yuelirenjia.mooncake</title>
-    <link rel="stylesheet" href="style.css?v=14.0">
+    <link rel="stylesheet" href="style.css?v=18.0">
     <style>
         /* 照片滑动容器 (Swipe Slider) */
         .slider-container {
@@ -21,7 +21,7 @@
         .slider-slide {
             min-width: 100%;
             position: relative;
-            padding-top: 75%; /* 4:3 比例 */
+            padding-top: 75%;
         }
         .slider-slide img {
             position: absolute;
@@ -31,7 +31,6 @@
             height: 100%;
             object-fit: cover;
         }
-        /* 左右滑动切换按钮 */
         .slider-btn {
             position: absolute;
             top: 50%;
@@ -71,6 +70,137 @@
             background: #ffffff;
             width: 16px;
             border-radius: 4px;
+        }
+
+        /* ---------------- 复古打印小票 (Printing Receipt) 弹窗样式 ---------------- */
+        .receipt-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(3px);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 3000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .receipt-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .receipt-paper {
+            background: #fffdf9;
+            width: 100%;
+            max-width: 340px;
+            padding: 24px 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            font-family: "Courier New", Courier, monospace, sans-serif;
+            color: #222;
+            position: relative;
+            border-top: 4px solid #8c2a1c;
+            /* 小票齿轮锯齿花边 */
+            mask-image: radial-gradient(circle at 10px 0, transparent 6px, #000 7px);
+            mask-size: 20px 100%;
+            animation: receiptPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        @keyframes receiptPop {
+            0% { transform: scale(0.8) translateY(20px); opacity: 0; }
+            100% { transform: scale(1) translateY(0); opacity: 1; }
+        }
+        .receipt-header {
+            text-align: center;
+            border-bottom: 2px dashed #333;
+            padding-bottom: 12px;
+            margin-bottom: 12px;
+        }
+        .receipt-header h2 {
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+            font-weight: bold;
+            color: #1a1a1a;
+        }
+        .receipt-header p {
+            font-size: 0.75rem;
+            color: #666;
+            margin-top: 2px;
+        }
+        .receipt-meta {
+            font-size: 0.75rem;
+            color: #444;
+            margin-bottom: 12px;
+            border-bottom: 1px dashed #ccc;
+            padding-bottom: 8px;
+        }
+        .receipt-items {
+            margin-bottom: 12px;
+        }
+        .receipt-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.82rem;
+            margin-bottom: 6px;
+        }
+        .receipt-row .item-sub {
+            font-size: 0.72rem;
+            color: #666;
+            padding-left: 8px;
+            margin-bottom: 4px;
+        }
+        .receipt-divider {
+            border-top: 2px dashed #333;
+            margin: 10px 0;
+        }
+        .receipt-total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.05rem;
+            font-weight: bold;
+            color: #8c2a1c;
+            margin-bottom: 15px;
+        }
+        .receipt-notice {
+            font-size: 0.7rem;
+            color: #777;
+            text-align: center;
+            line-height: 1.4;
+            margin-bottom: 16px;
+            background: #f7f3eb;
+            padding: 6px;
+            border-radius: 4px;
+        }
+        .btn-confirm-wa {
+            width: 100%;
+            background: #25d366;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+            font-family: -apple-system, sans-serif;
+        }
+        .btn-close-receipt {
+            position: absolute;
+            top: -12px;
+            right: -12px;
+            background: #333;
+            color: #fff;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 24px;
+            cursor: pointer;
+            font-size: 14px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
         }
     </style>
 </head>
@@ -113,7 +243,7 @@
 
             <div class="product-grid">
 
-                <!-- 商品 1：传统月饼（支持两张照片 Swipe 滑动） -->
+                <!-- 商品 1：传统月饼 -->
                 <div class="card">
                     <div class="slider-container" id="trad_slider">
                         <div class="slider-wrapper" id="trad_wrapper">
@@ -134,7 +264,7 @@
 
                     <div class="card-body">
                         <h3 class="product-name">传统月饼 (Traditional Mooncake)</h3>
-                        <p class="product-desc">自家精心熬煮馅料，皮薄馅靓，手工新鲜制作。</p>
+                        <p class="product-desc">采用低糖馅料，吃得安心，全手工制作。</p>
                         
                         <div class="flavor-section">
                             <label class="flavor-tip">1. 选择包装规格 (Type):</label>
@@ -230,7 +360,7 @@
                     </div>
                 </div>
 
-                <!-- 商品 3：原味公仔饼 (更新照片为 mooncake-3.jpeg) -->
+                <!-- 商品 3：原味公仔饼 -->
                 <div class="card">
                     <div class="card-img-container">
                         <img src="images/mooncake-3.jpeg" alt="月里人家原味公仔饼" onerror="this.src='images/logo.jpeg'">
@@ -256,7 +386,7 @@
                 <!-- 商品 4：椰丝公仔饼 -->
                 <div class="card">
                     <div class="card-img-container">
-                        <img src="images/mooncake-5.jpeg" alt="月里人家椰丝公仔饼" onerror="this.src='images/logo.jpeg'">
+                        <img src="images/gongzai_coconut.jpg" alt="月里人家椰丝公仔饼" onerror="this.src='images/logo.jpeg'">
                     </div>
                     <div class="card-body">
                         <h3 class="product-name">椰丝公仔饼</h3>
@@ -279,7 +409,7 @@
             </div>
         </section>
 
-        <!-- 4. 预订、配送与保存说明区 -->
+        <!-- 4. 说明区 -->
         <section class="block-section delivery-section">
             <div class="section-header">
                 <h2>🚗 预订、配送与保存说明 (Notice & Tips)</h2>
@@ -340,14 +470,43 @@
                 <span>总计金额 (Total):</span>
                 <span class="total-price" id="total-price">RM 0.00</span>
             </div>
-            <button class="btn-checkout-wa" onclick="window.checkoutToWhatsApp()">
-                💬 发送订单至 WhatsApp 结算
+            <button class="btn-checkout-wa" onclick="window.generateReceipt()">
+                🧾 结算并生成打印小票
+            </button>
+        </div>
+    </div>
+
+    <!-- 复古电子打印小票 Modal -->
+    <div class="receipt-overlay" id="receipt-overlay">
+        <div class="receipt-paper">
+            <span class="btn-close-receipt" onclick="window.closeReceipt()">×</span>
+            <div class="receipt-header">
+                <h2>月里人家 · 预订小票</h2>
+                <p>yuelirenjia.mooncake</p>
+            </div>
+            <div class="receipt-meta">
+                <div>单号 Order: <span id="receipt-no">#YLRJ-8888</span></div>
+                <div>时间 Date: <span id="receipt-date">2026-08-31 20:45</span></div>
+            </div>
+            <div class="receipt-items" id="receipt-items-list">
+                <!-- 动态填充明细 -->
+            </div>
+            <div class="receipt-divider"></div>
+            <div class="receipt-total">
+                <span>TOTAL:</span>
+                <span id="receipt-grand-total">RM 0.00</span>
+            </div>
+            <div class="receipt-notice">
+                🥮 纯手工住家烘焙 | 现做现发<br>
+                提醒：收到后静置等待回油口感更佳！
+            </div>
+            <button class="btn-confirm-wa" onclick="window.sendReceiptToWhatsApp()">
+                💬 确认小票并发至 WhatsApp
             </button>
         </div>
     </div>
 
     <script>
-        // 照片轮播 Swipe 逻辑
         let currentSlideIndex = 0;
         window.slideTrad = function(direction) {
             currentSlideIndex = (currentSlideIndex + direction + 2) % 2;
@@ -547,14 +706,52 @@
             document.getElementById('drawer-overlay').classList.remove('active');
         };
 
-        window.checkoutToWhatsApp = function() {
+        // ---------------- 生成与展示复古小票 ----------------
+        window.generateReceipt = function() {
             if (cart.length === 0) {
                 alert('购物车是空的！');
                 return;
             }
 
+            // 格式化当前时间与随机小票单号
+            let now = new Date();
+            let dateStr = now.getFullYear() + '-' + String(now.getMonth()+1).padStart(2,'0') + '-' + String(now.getDate()).padStart(2,'0') + ' ' + String(now.getHours()).padStart(2,'0') + ':' + String(now.getMinutes()).padStart(2,'0');
+            let randomNo = '#YLRJ-' + Math.floor(1000 + Math.random() * 9000);
+
+            document.getElementById('receipt-no').innerText = randomNo;
+            document.getElementById('receipt-date').innerText = dateStr;
+
+            let listHtml = '';
+            let grandTotal = 0;
+
+            cart.forEach((item) => {
+                grandTotal += item.price;
+                listHtml += `
+                    <div>
+                        <div class="receipt-row">
+                            <span>${item.title}</span>
+                            <span>RM ${item.price.toFixed(2)}</span>
+                        </div>
+                        <div class="item-sub">${item.desc}</div>
+                    </div>
+                `;
+            });
+
+            document.getElementById('receipt-items-list').innerHTML = listHtml;
+            document.getElementById('receipt-grand-total').innerText = `RM ${grandTotal.toFixed(2)}`;
+
+            window.closeCart();
+            document.getElementById('receipt-overlay').classList.add('active');
+        };
+
+        window.closeReceipt = function() {
+            document.getElementById('receipt-overlay').classList.remove('active');
+        };
+
+        window.sendReceiptToWhatsApp = function() {
             let phone = "60123456789"; // 请修改为你的真实 WhatsApp 电话号码
-            let msg = "你好！我想预订以下【月里人家】月饼：\n\n";
+            let receiptNo = document.getElementById('receipt-no').innerText;
+            let msg = `🧾 【月里人家】预订小票 (${receiptNo})\n-------------------------\n`;
             let grandTotal = 0;
 
             cart.forEach((item, i) => {
@@ -562,7 +759,7 @@
                 grandTotal += item.price;
             });
 
-            msg += `--------------------\n订单总计 (Total): RM ${grandTotal.toFixed(2)}\n（邮费另计 / 北海区可自取）\n\n请帮我确认订单！`;
+            msg += `-------------------------\n订单总计 (TOTAL): RM ${grandTotal.toFixed(2)}\n（邮费另计 / 北海区可自取）\n\n请帮我确认订单与发货安排！`;
 
             window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '_blank');
         };
