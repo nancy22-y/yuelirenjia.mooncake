@@ -600,3 +600,10 @@ body {
     margin-bottom: 8px;
     outline: none;
 }
+/* 让所有商品图片与滑动轮播图完整显示（不被裁剪） */
+.card-img-container img,
+.slider-slide img {
+    object-fit: contain !important; /* 完整展示整张图片 */
+    background-color: #fcf9f2;      /* 给四周留白处衬托典雅的浅色背景 */
+    padding: 6px;                    /* 适当留白，显得更精致 */
+}
