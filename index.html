@@ -4,7 +4,75 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>月里人家 | 纯手工住家月饼 yuelirenjia.mooncake</title>
-    <link rel="stylesheet" href="style.css?v=13.0">
+    <link rel="stylesheet" href="style.css?v=14.0">
+    <style>
+        /* 照片滑动容器 (Swipe Slider) */
+        .slider-container {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            background: #f0e6d2;
+        }
+        .slider-wrapper {
+            display: flex;
+            transition: transform 0.3s ease-in-out;
+            width: 100%;
+        }
+        .slider-slide {
+            min-width: 100%;
+            position: relative;
+            padding-top: 75%; /* 4:3 比例 */
+        }
+        .slider-slide img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        /* 左右滑动切换按钮 */
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(84, 67, 58, 0.6);
+            color: #ffffff;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+        .slider-btn.left { left: 8px; }
+        .slider-btn.right { right: 8px; }
+        .slider-dots {
+            position: absolute;
+            bottom: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 6px;
+            z-index: 2;
+        }
+        .slider-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+        }
+        .slider-dot.active {
+            background: #ffffff;
+            width: 16px;
+            border-radius: 4px;
+        }
+    </style>
 </head>
 <body>
 
@@ -45,11 +113,25 @@
 
             <div class="product-grid">
 
-                <!-- 商品 1：传统月饼（下拉切换 4粒装 / 6粒装） -->
+                <!-- 商品 1：传统月饼（支持两张照片 Swipe 滑动） -->
                 <div class="card">
-                    <div class="card-img-container">
-                        <img src="images/mooncake1.jpg" alt="月里人家传统月饼" onerror="this.src='images/logo.jpeg'">
+                    <div class="slider-container" id="trad_slider">
+                        <div class="slider-wrapper" id="trad_wrapper">
+                            <div class="slider-slide">
+                                <img src="images/mooncake-1.jpeg" alt="月里人家传统月饼 1" onerror="this.src='images/logo.jpeg'">
+                            </div>
+                            <div class="slider-slide">
+                                <img src="images/mooncake-2.jpeg" alt="月里人家传统月饼 2" onerror="this.src='images/logo.jpeg'">
+                            </div>
+                        </div>
+                        <button class="slider-btn left" onclick="window.slideTrad(-1)">❮</button>
+                        <button class="slider-btn right" onclick="window.slideTrad(1)">❯</button>
+                        <div class="slider-dots">
+                            <span class="slider-dot active" id="dot_0" onclick="window.goToSlide(0)"></span>
+                            <span class="slider-dot" id="dot_1" onclick="window.goToSlide(1)"></span>
+                        </div>
                     </div>
+
                     <div class="card-body">
                         <h3 class="product-name">传统月饼 (Traditional Mooncake)</h3>
                         <p class="product-desc">自家精心熬煮馅料，皮薄馅靓，手工新鲜制作。</p>
@@ -148,15 +230,15 @@
                     </div>
                 </div>
 
-                <!-- 商品 3：原味公仔饼 -->
+                <!-- 商品 3：原味公仔饼 (更新照片为 mooncake-3.jpeg) -->
                 <div class="card">
                     <div class="card-img-container">
-                        <img src="images/mooncake2.jpg" alt="月里人家原味公仔饼" onerror="this.src='images/logo.jpeg'">
+                        <img src="images/mooncake-3.jpeg" alt="月里人家原味公仔饼" onerror="this.src='images/logo.jpeg'">
                     </div>
                     <div class="card-body">
                         <h3 class="product-name">原味公仔饼</h3>
                         <p class="product-desc">纯手工压模现烤，糖浆饼皮软糯香浓，传统住家滋味 (1 Box / 10 pcs)。</p>
-                        <div class="price-text">RM 12.00 / Box</div>
+                        <div class="price-text">RM 11.00 / Box</div>
                         
                         <div class="single-qty-box">
                             <label class="flavor-tip">选择买多少盒：</label>
@@ -167,7 +249,7 @@
                             </div>
                         </div>
 
-                        <button class="btn-add-cart" onclick="window.addSimpleToCart('gongzai', '原味公仔饼 (10粒装)', 12.00)">加入购物车</button>
+                        <button class="btn-add-cart" onclick="window.addSimpleToCart('gongzai', '原味公仔饼 (10粒装)', 11.00)">加入购物车</button>
                     </div>
                 </div>
 
@@ -179,7 +261,7 @@
                     <div class="card-body">
                         <h3 class="product-name">椰丝公仔饼</h3>
                         <p class="product-desc">特制手工香炒椰丝馅，甜而不腻，浓郁南洋风味 (1 Box / 10 pcs)。</p>
-                        <div class="price-text">RM 15.00 / Box</div>
+                        <div class="price-text">RM 13.00 / Box</div>
                         
                         <div class="single-qty-box">
                             <label class="flavor-tip">选择买多少盒：</label>
@@ -190,7 +272,7 @@
                             </div>
                         </div>
 
-                        <button class="btn-add-cart" onclick="window.addSimpleToCart('coconut_gongzai', '椰丝公仔饼 (10粒装)', 15.00)">加入购物车</button>
+                        <button class="btn-add-cart" onclick="window.addSimpleToCart('coconut_gongzai', '椰丝公仔饼 (10粒装)', 13.00)">加入购物车</button>
                     </div>
                 </div>
 
@@ -265,6 +347,19 @@
     </div>
 
     <script>
+        // 照片轮播 Swipe 逻辑
+        let currentSlideIndex = 0;
+        window.slideTrad = function(direction) {
+            currentSlideIndex = (currentSlideIndex + direction + 2) % 2;
+            window.goToSlide(currentSlideIndex);
+        };
+        window.goToSlide = function(index) {
+            currentSlideIndex = index;
+            document.getElementById('trad_wrapper').style.transform = `translateX(-${index * 100}%)`;
+            document.getElementById('dot_0').classList.toggle('active', index === 0);
+            document.getElementById('dot_1').classList.toggle('active', index === 1);
+        };
+
         const flavorNames = {
             'feicui': '翡翠豆蓉',
             'dousha': '玫瑰豆沙',
