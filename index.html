@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>月里人家 | 纯手工住家月饼 yuelirenjia.mooncake</title>
-    <link rel="stylesheet" href="style.css?v=11.0">
+    <link rel="stylesheet" href="style.css?v=13.0">
 </head>
 <body>
 
@@ -25,7 +25,7 @@
             </div>
         </header>
 
-        <!-- 2. 大尺寸 Banner 宣传统图区 -->
+        <!-- 2. Banner 宣传统图区 -->
         <section class="block-section banner-section">
             <div class="banner-container">
                 <img src="images/logo.jpeg" alt="月里人家中秋宣传" class="banner-img">
@@ -40,138 +40,80 @@
         <section class="block-section product-section">
             <div class="section-header">
                 <h2>🥮 精选手工月饼</h2>
-                <span class="section-sub">选择口味并凑满数量后加入购物车</span>
+                <span class="section-sub">选择规格与口味后加入购物车</span>
             </div>
 
             <div class="product-grid">
 
-                <!-- 商品 1：4粒装传统月饼 -->
+                <!-- 商品 1：传统月饼（下拉切换 4粒装 / 6粒装） -->
                 <div class="card">
                     <div class="card-img-container">
-                        <img src="images/mooncake1.jpg" alt="月里人家传统月饼 4粒装" onerror="this.src='images/logo.jpeg'">
+                        <img src="images/mooncake1.jpg" alt="月里人家传统月饼" onerror="this.src='images/logo.jpeg'">
                     </div>
                     <div class="card-body">
-                        <h3 class="product-name">传统月饼 (1 Box / 4 pcs)</h3>
-                        <p class="product-desc">自家精心熬煮馅料，皮薄馅靓，每盒任选 4 粒。</p>
-                        <div class="price-text">RM 28.00 / Box</div>
+                        <h3 class="product-name">传统月饼 (Traditional Mooncake)</h3>
+                        <p class="product-desc">自家精心熬煮馅料，皮薄馅靓，手工新鲜制作。</p>
                         
                         <div class="flavor-section">
-                            <p class="flavor-tip">任选口味 (已选 <span id="count_4pcs" class="limit-num">0</span>/4 粒):</p>
+                            <label class="flavor-tip">1. 选择包装规格 (Type):</label>
+                            <select id="box_type_select" class="type-select" onchange="window.switchBoxType()">
+                                <option value="4pcs">🎁 4 粒装 (1 Box / 4 pcs) — RM 28.00</option>
+                                <option value="6pcs">🎁 6 粒装 (1 Box / 6 pcs) — RM 40.00</option>
+                            </select>
+
+                            <p class="flavor-tip" style="margin-top: 10px;">2. 任选口味 (已选 <span id="current_flavor_count" class="limit-num">0</span>/<span id="max_flavor_limit">4</span> 粒):</p>
                             
                             <div class="flavor-row">
                                 <span class="flavor-name">🥮 翡翠豆蓉</span>
                                 <div class="qty-picker">
-                                    <button class="btn-qty" onclick="window.adjustFlavor('4pcs', 'feicui', -1)">-</button>
-                                    <span class="qty-num" id="qty_4pcs_feicui">0</span>
-                                    <button class="btn-qty" onclick="window.adjustFlavor('4pcs', 'feicui', 1)">+</button>
+                                    <button class="btn-qty" onclick="window.adjustFlavor('feicui', -1)">-</button>
+                                    <span class="qty-num" id="qty_feicui">0</span>
+                                    <button class="btn-qty" onclick="window.adjustFlavor('feicui', 1)">+</button>
                                 </div>
                             </div>
 
                             <div class="flavor-row">
                                 <span class="flavor-name">🥮 玫瑰豆沙</span>
                                 <div class="qty-picker">
-                                    <button class="btn-qty" onclick="window.adjustFlavor('4pcs', 'dousha', -1)">-</button>
-                                    <span class="qty-num" id="qty_4pcs_dousha">0</span>
-                                    <button class="btn-qty" onclick="window.adjustFlavor('4pcs', 'dousha', 1)">+</button>
+                                    <button class="btn-qty" onclick="window.adjustFlavor('dousha', -1)">-</button>
+                                    <span class="qty-num" id="qty_dousha">0</span>
+                                    <button class="btn-qty" onclick="window.adjustFlavor('dousha', 1)">+</button>
                                 </div>
                             </div>
 
                             <div class="flavor-row">
                                 <span class="flavor-name">🥮 咖啡</span>
                                 <div class="qty-picker">
-                                    <button class="btn-qty" onclick="window.adjustFlavor('4pcs', 'coffee', -1)">-</button>
-                                    <span class="qty-num" id="qty_4pcs_coffee">0</span>
-                                    <button class="btn-qty" onclick="window.adjustFlavor('4pcs', 'coffee', 1)">+</button>
+                                    <button class="btn-qty" onclick="window.adjustFlavor('coffee', -1)">-</button>
+                                    <span class="qty-num" id="qty_coffee">0</span>
+                                    <button class="btn-qty" onclick="window.adjustFlavor('coffee', 1)">+</button>
                                 </div>
                             </div>
 
                             <div class="flavor-row">
                                 <span class="flavor-name">🥮 白豆蓉</span>
                                 <div class="qty-picker">
-                                    <button class="btn-qty" onclick="window.adjustFlavor('4pcs', 'baidourong', -1)">-</button>
-                                    <span class="qty-num" id="qty_4pcs_baidourong">0</span>
-                                    <button class="btn-qty" onclick="window.adjustFlavor('4pcs', 'baidourong', 1)">+</button>
+                                    <button class="btn-qty" onclick="window.adjustFlavor('baidourong', -1)">-</button>
+                                    <span class="qty-num" id="qty_baidourong">0</span>
+                                    <button class="btn-qty" onclick="window.adjustFlavor('baidourong', 1)">+</button>
                                 </div>
                             </div>
 
                             <div class="flavor-row">
                                 <span class="flavor-name">🥮 巧克力</span>
                                 <div class="qty-picker">
-                                    <button class="btn-qty" onclick="window.adjustFlavor('4pcs', 'chocolate', -1)">-</button>
-                                    <span class="qty-num" id="qty_4pcs_chocolate">0</span>
-                                    <button class="btn-qty" onclick="window.adjustFlavor('4pcs', 'chocolate', 1)">+</button>
+                                    <button class="btn-qty" onclick="window.adjustFlavor('chocolate', -1)">-</button>
+                                    <span class="qty-num" id="qty_chocolate">0</span>
+                                    <button class="btn-qty" onclick="window.adjustFlavor('chocolate', 1)">+</button>
                                 </div>
                             </div>
                         </div>
 
-                        <button class="btn-add-cart" onclick="window.addBoxToCart('4pcs')">加入购物车</button>
+                        <button class="btn-add-cart" onclick="window.addTradBoxToCart()">加入购物车</button>
                     </div>
                 </div>
 
-                <!-- 商品 2：6粒装传统月饼 -->
-                <div class="card">
-                    <div class="card-img-container">
-                        <img src="images/mooncake1.jpg" alt="月里人家传统月饼 6粒装" onerror="this.src='images/logo.jpeg'">
-                    </div>
-                    <div class="card-body">
-                        <h3 class="product-name">传统月饼 (1 Box / 6 pcs)</h3>
-                        <p class="product-desc">自家精心熬煮馅料，皮薄馅靓，每盒任选 6 粒。</p>
-                        <div class="price-text">RM 40.00 / Box</div>
-                        
-                        <div class="flavor-section">
-                            <p class="flavor-tip">任选口味 (已选 <span id="count_6pcs" class="limit-num">0</span>/6 粒):</p>
-                            
-                            <div class="flavor-row">
-                                <span class="flavor-name">🥮 翡翠豆蓉</span>
-                                <div class="qty-picker">
-                                    <button class="btn-qty" onclick="window.adjustFlavor('6pcs', 'feicui', -1)">-</button>
-                                    <span class="qty-num" id="qty_6pcs_feicui">0</span>
-                                    <button class="btn-qty" onclick="window.adjustFlavor('6pcs', 'feicui', 1)">+</button>
-                                </div>
-                            </div>
-
-                            <div class="flavor-row">
-                                <span class="flavor-name">🥮 玫瑰豆沙</span>
-                                <div class="qty-picker">
-                                    <button class="btn-qty" onclick="window.adjustFlavor('6pcs', 'dousha', -1)">-</button>
-                                    <span class="qty-num" id="qty_6pcs_dousha">0</span>
-                                    <button class="btn-qty" onclick="window.adjustFlavor('6pcs', 'dousha', 1)">+</button>
-                                </div>
-                            </div>
-
-                            <div class="flavor-row">
-                                <span class="flavor-name">🥮 咖啡</span>
-                                <div class="qty-picker">
-                                    <button class="btn-qty" onclick="window.adjustFlavor('6pcs', 'coffee', -1)">-</button>
-                                    <span class="qty-num" id="qty_6pcs_coffee">0</span>
-                                    <button class="btn-qty" onclick="window.adjustFlavor('6pcs', 'coffee', 1)">+</button>
-                                </div>
-                            </div>
-
-                            <div class="flavor-row">
-                                <span class="flavor-name">🥮 白豆蓉</span>
-                                <div class="qty-picker">
-                                    <button class="btn-qty" onclick="window.adjustFlavor('6pcs', 'baidourong', -1)">-</button>
-                                    <span class="qty-num" id="qty_6pcs_baidourong">0</span>
-                                    <button class="btn-qty" onclick="window.adjustFlavor('6pcs', 'baidourong', 1)">+</button>
-                                </div>
-                            </div>
-
-                            <div class="flavor-row">
-                                <span class="flavor-name">🥮 巧克力</span>
-                                <div class="qty-picker">
-                                    <button class="btn-qty" onclick="window.adjustFlavor('6pcs', 'chocolate', -1)">-</button>
-                                    <span class="qty-num" id="qty_6pcs_chocolate">0</span>
-                                    <button class="btn-qty" onclick="window.adjustFlavor('6pcs', 'chocolate', 1)">+</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <button class="btn-add-cart" onclick="window.addBoxToCart('6pcs')">加入购物车</button>
-                    </div>
-                </div>
-
-                <!-- 商品 3：上海月饼 -->
+                <!-- 商品 2：上海月饼 -->
                 <div class="card">
                     <div class="card-img-container">
                         <img src="images/shanghai.jpg" alt="月里人家上海月饼" onerror="this.src='images/logo.jpeg'">
@@ -206,7 +148,7 @@
                     </div>
                 </div>
 
-                <!-- 商品 4：原味公仔饼 -->
+                <!-- 商品 3：原味公仔饼 -->
                 <div class="card">
                     <div class="card-img-container">
                         <img src="images/mooncake2.jpg" alt="月里人家原味公仔饼" onerror="this.src='images/logo.jpeg'">
@@ -214,7 +156,7 @@
                     <div class="card-body">
                         <h3 class="product-name">原味公仔饼</h3>
                         <p class="product-desc">纯手工压模现烤，糖浆饼皮软糯香浓，传统住家滋味 (1 Box / 10 pcs)。</p>
-                        <div class="price-text">RM 11.00 / Box</div>
+                        <div class="price-text">RM 12.00 / Box</div>
                         
                         <div class="single-qty-box">
                             <label class="flavor-tip">选择买多少盒：</label>
@@ -225,11 +167,11 @@
                             </div>
                         </div>
 
-                        <button class="btn-add-cart" onclick="window.addSimpleToCart('gongzai', '原味公仔饼 (10粒装)', 11.00)">加入购物车</button>
+                        <button class="btn-add-cart" onclick="window.addSimpleToCart('gongzai', '原味公仔饼 (10粒装)', 12.00)">加入购物车</button>
                     </div>
                 </div>
 
-                <!-- 商品 5：椰丝公仔饼 -->
+                <!-- 商品 4：椰丝公仔饼 -->
                 <div class="card">
                     <div class="card-img-container">
                         <img src="images/gongzai_coconut.jpg" alt="月里人家椰丝公仔饼" onerror="this.src='images/logo.jpeg'">
@@ -237,7 +179,7 @@
                     <div class="card-body">
                         <h3 class="product-name">椰丝公仔饼</h3>
                         <p class="product-desc">特制手工香炒椰丝馅，甜而不腻，浓郁南洋风味 (1 Box / 10 pcs)。</p>
-                        <div class="price-text">RM 13.00 / Box</div>
+                        <div class="price-text">RM 15.00 / Box</div>
                         
                         <div class="single-qty-box">
                             <label class="flavor-tip">选择买多少盒：</label>
@@ -248,14 +190,14 @@
                             </div>
                         </div>
 
-                        <button class="btn-add-cart" onclick="window.addSimpleToCart('coconut_gongzai', '椰丝公仔饼 (10粒装)', 13.00)">加入购物车</button>
+                        <button class="btn-add-cart" onclick="window.addSimpleToCart('coconut_gongzai', '椰丝公仔饼 (10粒装)', 15.00)">加入购物车</button>
                     </div>
                 </div>
 
             </div>
         </section>
 
-        <!-- 4. 预订、配送与食用保存说明区 -->
+        <!-- 4. 预订、配送与保存说明区 -->
         <section class="block-section delivery-section">
             <div class="section-header">
                 <h2>🚗 预订、配送与保存说明 (Notice & Tips)</h2>
@@ -331,8 +273,7 @@
             'chocolate': '巧克力'
         };
 
-        let flavors4 = { 'feicui': 0, 'dousha': 0, 'coffee': 0, 'baidourong': 0, 'chocolate': 0 };
-        let flavors6 = { 'feicui': 0, 'dousha': 0, 'coffee': 0, 'baidourong': 0, 'chocolate': 0 };
+        let currentTradFlavors = { 'feicui': 0, 'dousha': 0, 'coffee': 0, 'baidourong': 0, 'chocolate': 0 };
         
         let singleQuantities = {
             'shanghai_single': 0,
@@ -343,23 +284,35 @@
 
         let cart = [];
 
-        window.adjustFlavor = function(boxType, flavorKey, delta) {
-            let targetObj = (boxType === '4pcs') ? flavors4 : flavors6;
-            let maxLimit = (boxType === '4pcs') ? 4 : 6;
-            let currentSum = Object.values(targetObj).reduce((a, b) => a + b, 0);
+        window.switchBoxType = function() {
+            let selectVal = document.getElementById('box_type_select').value;
+            let limit = (selectVal === '4pcs') ? 4 : 6;
+            document.getElementById('max_flavor_limit').innerText = limit;
+            
+            for (let key in currentTradFlavors) {
+                currentTradFlavors[key] = 0;
+                document.getElementById(`qty_${key}`).innerText = 0;
+            }
+            document.getElementById('current_flavor_count').innerText = 0;
+        };
+
+        window.adjustFlavor = function(flavorKey, delta) {
+            let selectVal = document.getElementById('box_type_select').value;
+            let maxLimit = (selectVal === '4pcs') ? 4 : 6;
+            let currentSum = Object.values(currentTradFlavors).reduce((a, b) => a + b, 0);
 
             if (delta > 0 && currentSum >= maxLimit) {
-                alert(`这盒最多只能选择 ${maxLimit} 粒月饼！`);
+                alert(`当前选择的包装规格最多只能选择 ${maxLimit} 粒月饼！`);
                 return;
             }
 
-            if (targetObj[flavorKey] + delta >= 0) {
-                targetObj[flavorKey] += delta;
+            if (currentTradFlavors[flavorKey] + delta >= 0) {
+                currentTradFlavors[flavorKey] += delta;
             }
 
-            document.getElementById(`qty_${boxType}_${flavorKey}`).innerText = targetObj[flavorKey];
-            let newSum = Object.values(targetObj).reduce((a, b) => a + b, 0);
-            document.getElementById(`count_${boxType}`).innerText = newSum;
+            document.getElementById(`qty_${flavorKey}`).innerText = currentTradFlavors[flavorKey];
+            let newSum = Object.values(currentTradFlavors).reduce((a, b) => a + b, 0);
+            document.getElementById('current_flavor_count').innerText = newSum;
         };
 
         window.adjustSingle = function(key, delta) {
@@ -369,10 +322,11 @@
             }
         };
 
-        window.addBoxToCart = function(boxType) {
-            let targetObj = (boxType === '4pcs') ? flavors4 : flavors6;
-            let limit = (boxType === '4pcs') ? 4 : 6;
-            let currentSum = Object.values(targetObj).reduce((a, b) => a + b, 0);
+        window.addTradBoxToCart = function() {
+            let selectVal = document.getElementById('box_type_select').value;
+            let limit = (selectVal === '4pcs') ? 4 : 6;
+            let price = (selectVal === '4pcs') ? 28.00 : 40.00;
+            let currentSum = Object.values(currentTradFlavors).reduce((a, b) => a + b, 0);
 
             if (currentSum !== limit) {
                 alert(`请先选满 ${limit} 粒口味，再加入购物车（目前已选 ${currentSum}/${limit} 粒）`);
@@ -380,22 +334,19 @@
             }
 
             let detailsArr = [];
-            for (let key in targetObj) {
-                if (targetObj[key] > 0) {
-                    detailsArr.push(`${flavorNames[key]} x${targetObj[key]}`);
+            for (let key in currentTradFlavors) {
+                if (currentTradFlavors[key] > 0) {
+                    detailsArr.push(`${flavorNames[key]} x${currentTradFlavors[key]}`);
                 }
             }
 
             cart.push({
                 title: `传统月饼 (${limit}粒装)`,
                 desc: detailsArr.join(', '),
-                price: (boxType === '4pcs') ? 28.00 : 40.00
+                price: price
             });
 
-            for (let key in targetObj) targetObj[key] = 0;
-            for (let key in targetObj) document.getElementById(`qty_${boxType}_${key}`).innerText = 0;
-            document.getElementById(`count_${boxType}`).innerText = 0;
-
+            window.switchBoxType();
             window.updateCartDrawer();
             window.openCart();
         };
@@ -507,7 +458,7 @@
                 return;
             }
 
-            let phone = "60123456789"; // 请修改为你的 WhatsApp 电话号码
+            let phone = "60123456789"; // 请修改为你的真实 WhatsApp 电话号码
             let msg = "你好！我想预订以下【月里人家】月饼：\n\n";
             let grandTotal = 0;
 
