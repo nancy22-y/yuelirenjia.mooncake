@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>月里人家 | 纯手工住家月饼 yuelirenjia.mooncake</title>
-    <link rel="stylesheet" href="style.css?v=5.0">
+    <link rel="stylesheet" href="style.css?v=7.0">
 </head>
 <body>
 
@@ -16,9 +16,9 @@
         <!-- 1. Header 品牌区 -->
         <header class="store-header">
             <div class="brand-box">
-                <!-- 品牌 Logo：使用根目录的 logo.jpeg -->
-                <img src="logo.jpeg" alt="月里人家 Logo" class="brand-logo" onerror="this.style.display='none'">
-                <div class="logo-fallback">月</div>
+                <!-- 修改路径为 images/logo.jpeg -->
+                <img src="images/logo.jpeg" alt="月里人家 Logo" class="brand-logo" onerror="this.style.display='none'; document.querySelector('.logo-fallback').style.display='flex';">
+                <div class="logo-fallback" style="display:none;">月</div>
                 <div>
                     <h1 class="brand-title">月里人家</h1>
                     <p class="brand-sub">yuelirenjia.mooncake · 纯手工住家烘焙</p>
@@ -29,9 +29,8 @@
         <!-- 2. 大尺寸 Banner 宣传统图区 -->
         <section class="block-section banner-section">
             <div class="banner-container">
-                <!-- Banner 照片路径：请在 images 文件夹里放一张 banner.jpg -->
-                <!-- 如果找不到 banner.jpg，会自动切换为 logo.jpeg 作为背景 -->
-                <img src="images/banner.jpg" alt="月里人家中秋宣传" class="banner-img" onerror="this.src='logo.jpeg'">
+                <!-- 预设使用 logo.jpeg 作为 Banner 背景图 -->
+                <img src="images/logo.jpeg" alt="月里人家中秋宣传" class="banner-img">
                 <div class="banner-overlay">
                     <h2>月里人家 · 团圆滋味</h2>
                     <p>🥮 纯手工住家烘焙 | 减糖低脂配方 | 每日限量新鲜出炉</p>
@@ -51,7 +50,7 @@
                 <!-- 商品 1：4粒装 -->
                 <div class="card">
                     <div class="card-img-container">
-                        <img src="images/mooncake1.jpg" alt="月里人家传统月饼 4粒装" onerror="this.src='logo.jpeg'">
+                        <img src="images/mooncake1.jpg" alt="月里人家传统月饼 4粒装" onerror="this.src='images/logo.jpeg'">
                     </div>
                     <div class="card-body">
                         <h3 class="product-name">传统月饼 (1 Box / 4 pcs)</h3>
@@ -105,7 +104,7 @@
                 <!-- 商品 2：6粒装 -->
                 <div class="card">
                     <div class="card-img-container">
-                        <img src="images/mooncake1.jpg" alt="月里人家传统月饼 6粒装" onerror="this.src='logo.jpeg'">
+                        <img src="images/mooncake1.jpg" alt="月里人家传统月饼 6粒装" onerror="this.src='images/logo.jpeg'">
                     </div>
                     <div class="card-body">
                         <h3 class="product-name">传统月饼 (1 Box / 6 pcs)</h3>
@@ -159,7 +158,7 @@
                 <!-- 商品 3：原味公仔饼 -->
                 <div class="card">
                     <div class="card-img-container">
-                        <img src="images/mooncake2.jpg" alt="月里人家原味公仔饼" onerror="this.src='logo.jpeg'">
+                        <img src="images/mooncake2.jpg" alt="月里人家原味公仔饼" onerror="this.src='images/logo.jpeg'">
                     </div>
                     <div class="card-body">
                         <h3 class="product-name">原味公仔饼</h3>
@@ -182,7 +181,7 @@
             </div>
         </section>
 
-        <!-- 4. 配送说明区 -->
+        <!-- 4. 配送与说明区 -->
         <section class="block-section delivery-section">
             <div class="section-header">
                 <h2>🚗 预订与配送说明</h2>
@@ -224,7 +223,7 @@
 
     </div>
 
-    <!-- 购物车 -->
+    <!-- 侧边购物车 -->
     <div class="floating-cart" onclick="window.openCart()">
         🛒 <span class="cart-count" id="cart-count">0</span>
     </div>
@@ -387,7 +386,7 @@
                 return;
             }
 
-            let phone = "60123456789"; // 改为你的真实 WhatsApp 号码
+            let phone = "60123456789";
             let msg = "你好！我想预订以下【月里人家】月饼：\n\n";
             let grandTotal = 0;
 
