@@ -5,13 +5,12 @@
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", sans-serif;
 }
 
-/* 暖米色古风纹理 + 优雅月饼暗纹背景 */
+/* 暖米色中秋韵味背景 + 柔和月光渐变 */
 body {
     background-color: #f7f4eb;
-    /* 采用双层渐变 + 柔和光晕，营造高质感中秋氛围 */
     background-image: 
-        radial-gradient(circle at 10% 10%, rgba(212, 175, 55, 0.08) 0%, transparent 40%),
-        radial-gradient(circle at 90% 90%, rgba(140, 42, 28, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 15% 15%, rgba(244, 208, 111, 0.18) 0%, transparent 45%),
+        radial-gradient(circle at 85% 85%, rgba(140, 42, 28, 0.08) 0%, transparent 45%),
         radial-gradient(#d5cebe 1.2px, transparent 1.2px);
     background-size: 100% 100%, 100% 100%, 24px 24px;
     background-attachment: fixed;
@@ -19,15 +18,16 @@ body {
     padding-bottom: 80px;
     position: relative;
     min-height: 100vh;
+    overflow-x: hidden;
 }
 
-/* 中秋典雅四角角花装饰（纯 CSS 极简画法） */
+/* 典雅中式双线窗花框 */
 .window-border-outer {
     position: fixed;
-    top: 12px;
-    left: 12px;
-    right: 12px;
-    bottom: 12px;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
     border: 1.5px solid #c5a059;
     pointer-events: none;
     z-index: 99;
@@ -35,11 +35,11 @@ body {
 
 .window-border-inner {
     position: fixed;
-    top: 16px;
-    left: 16px;
-    right: 16px;
-    bottom: 16px;
-    border: 1px dashed rgba(212, 175, 55, 0.6);
+    top: 14px;
+    left: 14px;
+    right: 14px;
+    bottom: 14px;
+    border: 1px dashed rgba(212, 175, 55, 0.5);
     pointer-events: none;
     z-index: 99;
 }
@@ -53,39 +53,58 @@ body {
     z-index: 10;
 }
 
-/* 左上角与右下角月饼元素暗纹装饰 */
+/* ---------------- 中秋浮动元素 (Floating Elements) ---------------- */
+
+/* 左上角：缓动浮动月饼 */
 .page-container::before {
     content: "🥮";
     position: fixed;
-    top: 25px;
-    left: 25px;
-    font-size: 7rem;
-    opacity: 0.06;
+    top: 60px;
+    left: 30px;
+    font-size: 5rem;
+    opacity: 0.15;
     pointer-events: none;
     z-index: 1;
-    transform: rotate(-15deg);
+    animation: floatMooncake 6s ease-in-out infinite;
+    filter: drop-shadow(0 10px 15px rgba(212, 175, 55, 0.3));
 }
 
+/* 右下角：缓动浮动明月与云彩 */
 .page-container::after {
-    content: "🥮";
+    content: "🌕";
     position: fixed;
-    bottom: 25px;
-    right: 25px;
-    font-size: 8rem;
-    opacity: 0.06;
+    bottom: 80px;
+    right: 35px;
+    font-size: 6rem;
+    opacity: 0.12;
     pointer-events: none;
     z-index: 1;
-    transform: rotate(20deg);
+    animation: floatMooncake 8s ease-in-out infinite reverse;
+    filter: drop-shadow(0 0 20px rgba(244, 208, 111, 0.5));
 }
 
-/* 品牌 Header */
+/* 上下浮动动画帧 */
+@keyframes floatMooncake {
+    0% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-18px) rotate(6deg);
+    }
+    100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+}
+
+/* ---------------- 网页组件与排版 ---------------- */
+
 .store-header {
     background: #ffffff;
     border: 1.5px solid #c5a059;
     border-radius: 8px;
     padding: 16px 20px;
     margin-bottom: 24px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    box-shadow: 0 4px 12px rgba(197, 160, 89, 0.1);
 }
 
 .brand-box {
@@ -127,26 +146,26 @@ body {
     color: #7a6e65;
 }
 
-/* 模块大白块区 */
 .block-section {
     background: #ffffff;
-    border-radius: 8px;
+    border-radius: 10px;
     border: 1px solid #dcd3c1;
     padding: 24px;
     margin-bottom: 24px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.03);
+    transition: transform 0.2s;
 }
 
 .banner-section {
     padding: 0;
     overflow: hidden;
-    border: 1px solid #c5a059;
+    border: 1.5px solid #c5a059;
 }
 
 .banner-container {
     position: relative;
     width: 100%;
-    height: 220px;
+    height: 230px;
     background: linear-gradient(135deg, #2b1f1d 0%, #4a342e 100%);
 }
 
@@ -161,7 +180,7 @@ body {
     bottom: 0;
     left: 0;
     right: 0;
-    background: linear-gradient(transparent, rgba(15, 10, 8, 0.9));
+    background: linear-gradient(transparent, rgba(15, 10, 8, 0.92));
     color: #ffffff;
     padding: 20px 24px;
 }
@@ -199,7 +218,7 @@ body {
 .product-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 18px;
+    gap: 20px;
     align-items: start;
 }
 
@@ -207,10 +226,17 @@ body {
     background: #ffffff;
     border-radius: 8px;
     border: 1px solid #dcd3c1;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    transition: all 0.25s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    border-color: #c5a059;
+    box-shadow: 0 6px 18px rgba(197, 160, 89, 0.15);
 }
 
 .card-img-container {
@@ -310,6 +336,7 @@ body {
     font-size: 0.9rem;
     cursor: pointer;
     color: #333;
+    transition: background 0.2s;
 }
 
 .btn-qty:hover {
@@ -382,7 +409,8 @@ body {
     line-height: 1.8;
 }
 
-/* 右下角悬浮购物车按纽 */
+/* ---------------- 侧边购物车 ---------------- */
+
 .floating-cart {
     position: fixed;
     bottom: 24px;
@@ -419,7 +447,6 @@ body {
     border: 1px solid #8c2a1c;
 }
 
-/* 侧边滑出购物车 */
 .drawer-overlay {
     position: fixed;
     top: 0;
@@ -481,7 +508,7 @@ body {
 .drawer-body {
     flex-grow: 1;
     padding: 20px;
-    overflow-y: auto;
+    overflow-y.auto;
 }
 
 .empty-text {
