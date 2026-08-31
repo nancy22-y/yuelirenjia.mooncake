@@ -607,3 +607,24 @@ body {
     background-color: #fcf9f2;      /* 给四周留白处衬托典雅的浅色背景 */
     padding: 6px;                    /* 适当留白，显得更精致 */
 }
+/* 让图片按原始比例完整展示：不裁剪、不留白、不变形 */
+.card-img-container,
+.slider-slide {
+    padding-top: 0 !important;   /* 取消固定高度限制 */
+    height: auto !important;
+}
+
+.card-img-container img,
+.slider-slide img {
+    position: static !important; /* 让图片按照照片原比例撑开卡片 */
+    width: 100% !important;
+    height: auto !important;
+    object-fit: fill !important;
+    padding: 0 !important;      /* 移除所有留白 */
+    background-color: transparent !important;
+}
+
+/* 轮播图自适应调整 */
+.slider-wrapper {
+    align-items: flex-start;
+}
