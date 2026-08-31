@@ -587,3 +587,16 @@ body {
     cursor: pointer;
     box-shadow: 0 2px 8px rgba(37, 211, 102, 0.2);
 }
+.type-select {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1.5px solid #c5a059;
+    border-radius: 6px;
+    background: #ffffff;
+    font-size: 0.85rem;
+    color: #1a1a1a;
+    font-weight: bold;
+    margin-top: 4px;
+    margin-bottom: 8px;
+    outline: none;
+}
