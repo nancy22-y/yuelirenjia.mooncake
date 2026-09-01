@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>月里人家 | 纯手工住家月饼 yuelirenjia.mooncake</title>
-    <link rel="stylesheet" href="style.css?v=21.0">
+    <link rel="stylesheet" href="style.css?v=23.0">
     <style>
         /* 照片滑动容器 (Swipe Slider) */
         .slider-container {
@@ -72,7 +72,27 @@
             border-radius: 4px;
         }
 
-        /* ---------------- 左下角客服直连按钮 ---------------- */
+        /* 爆款 / 热销 标签样式 */
+        .badge-hot {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff4e50, #f9d423);
+            color: #fff;
+            font-size: 0.72rem;
+            font-weight: bold;
+            padding: 2px 8px;
+            border-radius: 12px;
+            margin-left: 6px;
+            vertical-align: middle;
+            box-shadow: 0 2px 6px rgba(255, 78, 80, 0.4);
+            animation: pulseBadge 1.8s infinite;
+        }
+        @keyframes pulseBadge {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.06); }
+            100% { transform: scale(1); }
+        }
+
+        /* 左下角 WhatsApp 客服直连按钮 */
         .floating-wa-help {
             position: fixed;
             bottom: 24px;
@@ -303,7 +323,7 @@
 
             <div class="product-grid">
 
-                <!-- 商品 1：传统月饼 -->
+                <!-- 商品 1：传统月饼 (75g 规格) -->
                 <div class="card">
                     <div class="slider-container" id="trad_slider">
                         <div class="slider-wrapper" id="trad_wrapper">
@@ -323,8 +343,8 @@
                     </div>
 
                     <div class="card-body">
-                        <h3 class="product-name">传统月饼 (Traditional Mooncake)</h3>
-                        <p class="product-desc">采用低糖馅料，吃得安心，全手工制作（均附赠精美礼盒）。</p>
+                        <h3 class="product-name">传统月饼 (75g / 粒)</h3>
+                        <p class="product-desc">单粒重约 75g，全手工烘焙低糖馅料，精致适中不腻口（均附赠礼盒）。</p>
                         
                         <div class="flavor-section">
                             <label class="flavor-tip">1. 选择包装规格 (Type):</label>
@@ -452,13 +472,15 @@
                     </div>
                 </div>
 
-                <!-- 商品 4：椰丝公仔饼 -->
+                <!-- 商品 4：椰丝公仔饼 (加上【🔥 爆款】标签) -->
                 <div class="card">
                     <div class="card-img-container">
                         <img src="images/mooncake-5.jpeg" alt="月里人家椰丝公仔饼" onerror="this.src='images/logo.jpeg'">
                     </div>
                     <div class="card-body">
-                        <h3 class="product-name">椰丝公仔饼</h3>
+                        <h3 class="product-name">
+                            椰丝公仔饼 <span class="badge-hot">🔥 爆款</span>
+                        </h3>
                         <p class="product-desc">特制手工香炒椰丝馅，甜而不腻，浓郁南洋风味 (1 Box / 10 pcs)。</p>
                         <div class="price-text">RM 16.00 / Box</div>
                         
@@ -695,7 +717,7 @@
             }
 
             cart.push({
-                title: `传统月饼 (${limit}粒装)`,
+                title: `传统月饼 75g (${limit}粒装)`,
                 desc: detailsArr.join(', '),
                 price: price
             });
