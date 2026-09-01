@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>月里人家 | 纯手工住家月饼 yuelirenjia.mooncake</title>
-    <link rel="stylesheet" href="style.css?v=20.0">
+    <link rel="stylesheet" href="style.css?v=21.0">
     <style>
         /* 照片滑动容器 (Swipe Slider) */
         .slider-container {
@@ -70,6 +70,30 @@
             background: #ffffff;
             width: 16px;
             border-radius: 4px;
+        }
+
+        /* ---------------- 左下角客服直连按钮 ---------------- */
+        .floating-wa-help {
+            position: fixed;
+            bottom: 24px;
+            left: 24px;
+            background: #25d366;
+            color: #ffffff;
+            border-radius: 30px;
+            padding: 10px 16px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+            cursor: pointer;
+            z-index: 999;
+            text-decoration: none;
+            transition: transform 0.2s;
+        }
+        .floating-wa-help:hover {
+            transform: scale(1.05);
         }
 
         /* ---------------- 复古打印小票 (Printing Receipt) 弹窗 ---------------- */
@@ -300,13 +324,13 @@
 
                     <div class="card-body">
                         <h3 class="product-name">传统月饼 (Traditional Mooncake)</h3>
-                        <p class="product-desc">采用低糖馅料，吃得安心，全手工制作。</p>
+                        <p class="product-desc">采用低糖馅料，吃得安心，全手工制作（均附赠精美礼盒）。</p>
                         
                         <div class="flavor-section">
                             <label class="flavor-tip">1. 选择包装规格 (Type):</label>
                             <select id="box_type_select" class="type-select" onchange="window.switchBoxType()">
-                                <option value="4pcs"> 4 粒装 (1 Box / 4 pcs) — RM 28.00</option>
-                                <option value="6pcs"> 6 粒装 (1 Box / 6 pcs) — RM 40.00</option>
+                                <option value="4pcs">🎁 4 粒装 (1 Box / 4 pcs) — RM 28.00</option>
+                                <option value="6pcs">🎁 6 粒装 (1 Box / 6 pcs) — RM 40.00</option>
                             </select>
 
                             <p class="flavor-tip" style="margin-top: 10px;">2. 任选口味 (已选 <span id="current_flavor_count" class="limit-num">0</span>/<span id="max_flavor_limit">4</span> 粒):</p>
@@ -361,7 +385,7 @@
                     </div>
                 </div>
 
-                <!-- 商品 2：上海月饼 (新增 2粒装 RM 18.00 选项) -->
+                <!-- 商品 2：上海月饼 -->
                 <div class="card">
                     <div class="card-img-container">
                         <img src="images/shanghai.jpg" alt="月里人家上海月饼" onerror="this.src='images/logo.jpeg'">
@@ -495,6 +519,11 @@
         </section>
 
     </div>
+
+    <!-- 左下角 WhatsApp 快速询问按钮 -->
+    <a href="https://wa.me/60123456789?text=你好！我想询问【月里人家】月饼预订详情。" target="_blank" class="floating-wa-help">
+        💬 咨询客服
+    </a>
 
     <!-- 侧边购物车 -->
     <div class="floating-cart" onclick="window.openCart()">
@@ -860,7 +889,7 @@
                 return;
             }
 
-            let waPhone = "60123456789"; // 请改为你的真实 WhatsApp 电话号码
+            let waPhone = "60184007016"; // 请改为你的真实 WhatsApp 电话号码
             let receiptNo = document.getElementById('receipt-no').innerText;
 
             let msg = `🧾 【月里人家】预订订单 (${receiptNo})\n-------------------------\n`;
