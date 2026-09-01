@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>月里人家 | 纯手工住家月饼 yuelirenjia.mooncake</title>
-    <link rel="stylesheet" href="style.css?v=19.0">
+    <link rel="stylesheet" href="style.css?v=20.0">
     <style>
         /* 照片滑动容器 (Swipe Slider) */
         .slider-container {
@@ -361,7 +361,7 @@
                     </div>
                 </div>
 
-                <!-- 商品 2：上海月饼 -->
+                <!-- 商品 2：上海月饼 (新增 2粒装 RM 18.00 选项) -->
                 <div class="card">
                     <div class="card-img-container">
                         <img src="images/shanghai.jpg" alt="月里人家上海月饼" onerror="this.src='images/logo.jpeg'">
@@ -379,6 +379,15 @@
                                     <button class="btn-qty" onclick="window.adjustSingle('shanghai_single', -1)">-</button>
                                     <span class="qty-num" id="qty_shanghai_single">0</span>
                                     <button class="btn-qty" onclick="window.adjustSingle('shanghai_single', 1)">+</button>
+                                </div>
+                            </div>
+
+                            <div class="flavor-row">
+                                <span class="flavor-name">🎁 双粒装 2pcs (RM 18.00)</span>
+                                <div class="qty-picker">
+                                    <button class="btn-qty" onclick="window.adjustSingle('shanghai_double', -1)">-</button>
+                                    <span class="qty-num" id="qty_shanghai_double">0</span>
+                                    <button class="btn-qty" onclick="window.adjustSingle('shanghai_double', 1)">+</button>
                                 </div>
                             </div>
 
@@ -592,6 +601,7 @@
         
         let singleQuantities = {
             'shanghai_single': 0,
+            'shanghai_double': 0,
             'shanghai_box': 0,
             'gongzai': 1,
             'coconut_gongzai': 1
@@ -668,10 +678,11 @@
 
         window.addShanghaiToCart = function() {
             let singleQty = singleQuantities['shanghai_single'];
+            let doubleQty = singleQuantities['shanghai_double'];
             let boxQty = singleQuantities['shanghai_box'];
 
-            if (singleQty === 0 && boxQty === 0) {
-                alert('请先选择加购的单粒或盒装数量！');
+            if (singleQty === 0 && doubleQty === 0 && boxQty === 0) {
+                alert('请先选择加购的规格数量！');
                 return;
             }
 
@@ -683,17 +694,27 @@
                 });
             }
 
+            if (doubleQty > 0) {
+                cart.push({
+                    title: '上海月饼 (双粒装)',
+                    desc: `数量: ${doubleQty} 盒 (2pcs)`,
+                    price: 18.00 * doubleQty
+                });
+            }
+
             if (boxQty > 0) {
                 cart.push({
                     title: '上海月饼 (4粒盒装)',
-                    desc: `数量: ${boxQty} 盒`,
+                    desc: `数量: ${boxQty} 盒 (4pcs)`,
                     price: 36.00 * boxQty
                 });
             }
 
             singleQuantities['shanghai_single'] = 0;
+            singleQuantities['shanghai_double'] = 0;
             singleQuantities['shanghai_box'] = 0;
             document.getElementById('qty_shanghai_single').innerText = 0;
+            document.getElementById('qty_shanghai_double').innerText = 0;
             document.getElementById('qty_shanghai_box').innerText = 0;
 
             window.updateCartDrawer();
