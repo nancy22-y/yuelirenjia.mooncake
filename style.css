@@ -1,176 +1,169 @@
 /* ==========================================
-   月里人家 (yuelirenjia.mooncake) 网页全视图版
+   月里人家 (yuelirenjia.mooncake) 完整无损版
    ========================================== */
 
-/* 1. 全局重置与屏内自适应设置 */
+/* 1. 基础重置与全局字体 */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-html, body {
-    width: 100%;
-    height: 100%;
-    background-color: #f7f3eb; /* 暖复古底色 */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: #f7f3eb; /* 优雅温润的暖复古底色 */
     color: #4a3b32;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.5;
+    padding-bottom: 80px;
 }
 
-/* 双重复古复古边框 */
+/* 2. 边框与容器 */
 .window-border-outer {
     position: fixed;
     top: 0; left: 0; right: 0; bottom: 0;
-    border: 6px solid #8c2a1c;
+    border: 8px solid #8c2a1c;
     pointer-events: none;
     z-index: 9999;
 }
 
 .window-border-inner {
     position: fixed;
-    top: 3px; left: 3px; right: 3px; bottom: 3px;
-    border: 1.5px dashed #c5a059;
+    top: 4px; left: 4px; right: 4px; bottom: 4px;
+    border: 2px dashed #c5a059;
     pointer-events: none;
     z-index: 9998;
 }
 
-/* 2. 页面主容器 (屏内全视图自适应) */
 .page-container {
-    max-width: 960px;
+    max-width: 800px;
     margin: 0 auto;
-    padding: 12px 14px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+    padding: 20px 16px;
 }
 
-/* 3. Header 品牌抬头（紧凑全视图排版） */
+/* 3. Header 品牌区 */
 .store-header {
     text-align: center;
-    padding: 4px 0;
+    padding: 10px 0 15px 0;
 }
 
 .brand-box {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 12px;
 }
 
 .brand-logo {
-    width: 42px;
-    height: 42px;
+    width: 55px;
+    height: 55px;
     border-radius: 50%;
     object-fit: cover;
     border: 2px solid #8c2a1c;
 }
 
 .logo-fallback {
-    width: 42px;
-    height: 42px;
+    width: 55px;
+    height: 55px;
     border-radius: 50%;
     background: #8c2a1c;
     color: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 18px;
+    font-size: 22px;
     font-weight: bold;
 }
 
 .brand-title {
-    font-size: 1.35rem;
+    font-size: 1.6rem;
     color: #8c2a1c;
     font-weight: bold;
-    line-height: 1.1;
+    letter-spacing: 1px;
 }
 
 .brand-sub {
-    font-size: 0.72rem;
+    font-size: 0.82rem;
     color: #7a6858;
 }
 
-/* 4. Block 通用模块 */
+/* 4. Block 通用模块卡片 */
 .block-section {
     background: #ffffff;
-    border-radius: 10px;
-    padding: 10px 12px;
-    box-shadow: 0 3px 10px rgba(140, 42, 28, 0.05);
+    border-radius: 12px;
+    padding: 18px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(140, 42, 28, 0.06);
     border: 1px solid #ebdccb;
 }
 
-/* 5. 🎯 核心 Banner 全视图自适应比例 */
+/* 5. 🎯 核心修正：Banner 全视图（完整无剪裁）显示 */
 .banner-section {
-    padding: 6px !important;
+    padding: 8px !important;
 }
 
 .banner-container {
     position: relative;
     width: 100%;
-    aspect-ratio: 16 / 6; /* 控制 Banner 黄金宽高比例，确保占屏不大 */
-    border-radius: 6px;
+    height: auto; /* 高度完全跟随照片原图比例 */
+    border-radius: 8px;
     overflow: hidden;
-    background: #8c2a1c;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    background: #fdfaf5;
 }
 
 .banner-img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto; /* 保证原图宽高比，不剪裁、不拉伸 */
     display: block;
 }
 
 .banner-overlay {
     position: absolute;
     bottom: 0; left: 0; right: 0;
-    background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.75));
     color: #ffffff;
-    padding: 8px 12px;
+    padding: 12px 14px;
+    text-align: left;
 }
 
 .banner-overlay h2 {
-    font-size: 0.95rem;
+    font-size: 1.1rem;
     font-weight: bold;
+    margin-bottom: 2px;
+    letter-spacing: 1px;
 }
 
 .banner-overlay p {
-    font-size: 0.68rem;
+    font-size: 0.75rem;
     opacity: 0.9;
 }
 
-/* 6. 精选产品栅格 (2x2 紧凑全视图网格) */
 .section-header {
-    margin-bottom: 8px;
+    margin-bottom: 15px;
     border-bottom: 1px dashed #ebdccb;
-    padding-bottom: 4px;
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
+    padding-bottom: 8px;
 }
 
 .section-header h2 {
-    font-size: 1rem;
+    font-size: 1.2rem;
     color: #8c2a1c;
 }
 
 .section-sub {
-    font-size: 0.7rem;
+    font-size: 0.78rem;
     color: #888;
 }
 
+/* 6. 商品网格与卡片列表 */
 .product-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 保持双列美观排版 */
-    gap: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
 }
 
 .card {
     background: #fffdfa;
     border: 1px solid #f0e2d3;
-    border-radius: 8px;
+    border-radius: 10px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -178,103 +171,101 @@ html, body {
 
 .card-img-container {
     width: 100%;
-    aspect-ratio: 4 / 3; /* 控制商品图比例，不撑破屏幕 */
+    height: auto;
     position: relative;
     background: #fdfaf5;
-    overflow: hidden;
 }
 
 .card-img-container img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto;
     display: block;
 }
 
 .card-body {
-    padding: 8px 10px;
+    padding: 14px;
     display: flex;
     flex-direction: column;
     flex: 1;
 }
 
 .product-name {
-    font-size: 0.9rem;
+    font-size: 1.05rem;
     color: #2c1e16;
-    margin-bottom: 2px;
+    margin-bottom: 4px;
     display: flex;
     align-items: center;
 }
 
 .product-desc {
-    font-size: 0.7rem;
+    font-size: 0.78rem;
     color: #77685c;
-    margin-bottom: 6px;
-    line-height: 1.25;
+    margin-bottom: 10px;
 }
 
 .price-text {
-    font-size: 0.85rem;
+    font-size: 0.95rem;
     font-weight: bold;
     color: #8c2a1c;
-    margin-bottom: 6px;
-}
-
-/* 7. 选择器与控制按钮 */
-.flavor-section {
-    background: #fdfaf5;
-    border: 1px solid #f3e5d8;
-    border-radius: 5px;
-    padding: 6px 8px;
     margin-bottom: 8px;
 }
 
+/* 7. 选择器与数量调节器 */
+.flavor-section {
+    background: #fdfaf5;
+    border: 1px solid #f3e5d8;
+    border-radius: 6px;
+    padding: 10px;
+    margin-bottom: 12px;
+}
+
 .flavor-tip {
-    font-size: 0.68rem;
+    font-size: 0.76rem;
     font-weight: bold;
     color: #6a5547;
-    margin-bottom: 4px;
+    margin-bottom: 6px;
     display: block;
 }
 
 .limit-num {
     color: #8c2a1c;
+    font-weight: bold;
 }
 
 .type-select {
     width: 100%;
-    padding: 4px 6px;
-    font-size: 0.72rem;
+    padding: 6px 8px;
+    font-size: 0.8rem;
     border: 1px solid #dcd3c1;
     border-radius: 4px;
     background: #fff;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
 }
 
 .flavor-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 4px;
+    margin-bottom: 6px;
 }
 
 .flavor-name {
-    font-size: 0.72rem;
+    font-size: 0.8rem;
 }
 
 .qty-picker {
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 8px;
 }
 
 .single-qty-box {
-    margin-bottom: 8px;
+    margin-bottom: 12px;
 }
 
 .btn-qty {
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
     border-radius: 50%;
     border: 1px solid #c5a059;
     background: #fff;
@@ -284,13 +275,12 @@ html, body {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.75rem;
 }
 
 .qty-num {
-    font-size: 0.75rem;
+    font-size: 0.85rem;
     font-weight: bold;
-    min-width: 12px;
+    min-width: 14px;
     text-align: center;
 }
 
@@ -299,12 +289,17 @@ html, body {
     background: #8c2a1c;
     color: #ffffff;
     border: none;
-    padding: 7px;
-    border-radius: 5px;
-    font-size: 0.78rem;
+    padding: 9px;
+    border-radius: 6px;
+    font-size: 0.85rem;
     font-weight: bold;
     cursor: pointer;
     margin-top: auto;
+    transition: background 0.2s;
+}
+
+.btn-add-cart:hover {
+    background: #6f1f14;
 }
 
 /* 8. 🔥 爆款动画标签 */
@@ -312,49 +307,58 @@ html, body {
     display: inline-block;
     background: linear-gradient(135deg, #ff4e50, #f9d423);
     color: #fff;
-    font-size: 0.65rem;
+    font-size: 0.7rem;
     font-weight: bold;
-    padding: 1px 6px;
-    border-radius: 10px;
-    margin-left: 4px;
+    padding: 2px 8px;
+    border-radius: 12px;
+    margin-left: 6px;
     vertical-align: middle;
+    box-shadow: 0 2px 6px rgba(255, 78, 80, 0.4);
     animation: pulseBadge 1.8s infinite;
 }
 
 @keyframes pulseBadge {
     0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
+    50% { transform: scale(1.06); }
     100% { transform: scale(1); }
 }
 
-/* 9. 左下角 WhatsApp 与侧边购物车 */
+/* 9. 左下角 WhatsApp 快速客服按钮 */
 .floating-wa-help {
     position: fixed;
-    bottom: 18px;
-    left: 18px;
+    bottom: 24px;
+    left: 24px;
     background: #25d366;
     color: #ffffff;
-    border-radius: 25px;
-    padding: 8px 14px;
-    font-size: 0.78rem;
+    border-radius: 30px;
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.85rem;
     font-weight: bold;
-    box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
     cursor: pointer;
     z-index: 999;
     text-decoration: none;
+    transition: transform 0.2s;
 }
 
+.floating-wa-help:hover {
+    transform: scale(1.05);
+}
+
+/* 10. 侧边购物车 (Drawer) */
 .floating-cart {
     position: fixed;
-    bottom: 18px;
-    right: 18px;
+    bottom: 24px;
+    right: 24px;
     background: #8c2a1c;
     color: #fff;
-    padding: 8px 16px;
-    border-radius: 25px;
-    font-size: 0.82rem;
+    padding: 10px 18px;
+    border-radius: 30px;
     font-weight: bold;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.25);
     cursor: pointer;
     z-index: 1000;
 }
@@ -363,12 +367,11 @@ html, body {
     background: #fff;
     color: #8c2a1c;
     border-radius: 50%;
-    padding: 1px 6px;
-    font-size: 0.75rem;
+    padding: 1px 7px;
+    font-size: 0.8rem;
     margin-left: 4px;
 }
 
-/* 10. Drawer 购物车侧滑层 */
 .drawer-overlay {
     position: fixed;
     top: 0; left: 0;
@@ -386,7 +389,7 @@ html, body {
 .side-drawer {
     position: fixed;
     top: 0; right: -360px;
-    width: 100%; max-width: 320px;
+    width: 100%; max-width: 340px;
     height: 100vh;
     background: #fff;
     box-shadow: -4px 0 20px rgba(0,0,0,0.15);
@@ -401,7 +404,7 @@ html, body {
 }
 
 .drawer-header {
-    padding: 14px;
+    padding: 16px;
     border-bottom: 1px solid #eee;
     display: flex;
     justify-content: space-between;
@@ -409,13 +412,13 @@ html, body {
 }
 
 .close-drawer {
-    font-size: 18px;
+    font-size: 20px;
     cursor: pointer;
     color: #888;
 }
 
 .drawer-body {
-    padding: 14px;
+    padding: 16px;
     flex: 1;
     overflow-y: auto;
 }
@@ -423,12 +426,44 @@ html, body {
 .empty-text {
     text-align: center;
     color: #999;
-    font-size: 0.8rem;
-    margin-top: 30px;
+    font-size: 0.85rem;
+    margin-top: 40px;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px dashed #eee;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.cart-item h4 {
+    font-size: 0.85rem;
+}
+
+.cart-item p {
+    font-size: 0.72rem;
+    color: #666;
+}
+
+.cart-item .price {
+    font-size: 0.82rem;
+    color: #8c2a1c;
+    font-weight: bold;
+}
+
+.btn-del {
+    background: none;
+    border: none;
+    color: #ff4d4f;
+    font-size: 0.75rem;
+    cursor: pointer;
 }
 
 .drawer-footer {
-    padding: 14px;
+    padding: 16px;
     border-top: 1px solid #eee;
     background: #fdfaf5;
 }
@@ -437,12 +472,12 @@ html, body {
     display: flex;
     justify-content: space-between;
     font-weight: bold;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
 }
 
 .total-price {
     color: #8c2a1c;
-    font-size: 1rem;
+    font-size: 1.1rem;
 }
 
 .btn-checkout-wa {
@@ -450,9 +485,9 @@ html, body {
     background: #8c2a1c;
     color: #fff;
     border: none;
-    padding: 10px;
-    border-radius: 5px;
-    font-size: 0.85rem;
+    padding: 11px;
+    border-radius: 6px;
+    font-size: 0.9rem;
     font-weight: bold;
     cursor: pointer;
 }
@@ -461,26 +496,26 @@ html, body {
 .info-content {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 12px;
 }
 
 .info-item {
     display: flex;
-    gap: 8px;
-    font-size: 0.75rem;
+    gap: 10px;
+    font-size: 0.82rem;
 }
 
 .info-icon {
-    font-size: 1rem;
+    font-size: 1.1rem;
 }
 
 .info-item h4 {
     color: #8c2a1c;
-    margin-bottom: 1px;
+    margin-bottom: 2px;
 }
 
 .about-text {
-    font-size: 0.78rem;
+    font-size: 0.85rem;
     color: #665548;
-    line-height: 1.5;
+    line-height: 1.6;
 }
