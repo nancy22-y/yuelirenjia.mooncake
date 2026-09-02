@@ -1,5 +1,5 @@
 /* ==========================================
-   月里人家 (yuelirenjia.mooncake) 主样式表
+   月里人家 (yuelirenjia.mooncake) 完美修复版
    ========================================== */
 
 /* 1. 基础重置与全局字体 */
@@ -14,7 +14,7 @@ body {
     background-color: #f7f3eb; /* 优雅温润的暖复古底色 */
     color: #4a3b32;
     line-height: 1.5;
-    padding-bottom: 60px;
+    padding-bottom: 80px;
 }
 
 /* 2. 边框与容器 */
@@ -43,7 +43,7 @@ body {
 /* 3. Header 品牌区 */
 .store-header {
     text-align: center;
-    padding: 15px 0 20px 0;
+    padding: 10px 0 15px 0;
 }
 
 .brand-box {
@@ -86,7 +86,7 @@ body {
     color: #7a6858;
 }
 
-/* 4. Block 模块通栏卡片 */
+/* 4. Block 通用模块卡片 */
 .block-section {
     background: #ffffff;
     border-radius: 12px;
@@ -94,6 +94,51 @@ body {
     margin-bottom: 20px;
     box-shadow: 0 4px 15px rgba(140, 42, 28, 0.06);
     border: 1px solid #ebdccb;
+}
+
+/* 5. 🎯 修复重点：Banner 顶部宣传统图样式 */
+.banner-section {
+    padding: 10px !important;
+}
+
+.banner-container {
+    position: relative;
+    width: 100%;
+    height: 220px; /* 固定高质感 Banner 高度 */
+    background-color: #8c2a1c;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.banner-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 保证充满美观，不会拉伸变形 */
+    display: block;
+}
+
+.banner-overlay {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.75));
+    color: #ffffff;
+    padding: 14px 16px;
+    text-align: left;
+}
+
+.banner-overlay h2 {
+    font-size: 1.15rem;
+    font-weight: bold;
+    margin-bottom: 2px;
+    letter-spacing: 1px;
+}
+
+.banner-overlay p {
+    font-size: 0.75rem;
+    opacity: 0.9;
 }
 
 .section-header {
@@ -112,40 +157,7 @@ body {
     color: #888;
 }
 
-/* 5. Banner 宣传图区 */
-.banner-container {
-    position: relative;
-    width: 100%;
-    border-radius: 8px;
-    overflow: hidden;
-}
-
-.banner-img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    display: block;
-}
-
-.banner-overlay {
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    background: linear-gradient(transparent, rgba(0,0,0,0.75));
-    color: #fff;
-    padding: 12px 15px;
-}
-
-.banner-overlay h2 {
-    font-size: 1.1rem;
-    margin-bottom: 2px;
-}
-
-.banner-overlay p {
-    font-size: 0.75rem;
-    opacity: 0.9;
-}
-
-/* 6. 商品网格与卡片 */
+/* 6. 商品网格与卡片列表 */
 .product-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -163,15 +175,17 @@ body {
 
 .card-img-container {
     width: 100%;
-    padding-top: 65%;
+    height: 200px; /* 修复：给商品图片固定正常的高度，防止挤占页面 */
     position: relative;
+    overflow: hidden;
+    background: #fdfaf5;
 }
 
 .card-img-container img {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
+    display: block;
 }
 
 .card-body {
@@ -185,6 +199,8 @@ body {
     font-size: 1.05rem;
     color: #2c1e16;
     margin-bottom: 4px;
+    display: flex;
+    align-items: center;
 }
 
 .product-desc {
@@ -249,6 +265,10 @@ body {
     gap: 8px;
 }
 
+.single-qty-box {
+    margin-bottom: 12px;
+}
+
 .btn-qty {
     width: 24px;
     height: 24px;
@@ -293,7 +313,7 @@ body {
     display: inline-block;
     background: linear-gradient(135deg, #ff4e50, #f9d423);
     color: #fff;
-    font-size: 0.72rem;
+    font-size: 0.7rem;
     font-weight: bold;
     padding: 2px 8px;
     border-radius: 12px;
@@ -309,7 +329,32 @@ body {
     100% { transform: scale(1); }
 }
 
-/* 9. 侧边购物车 (Drawer) */
+/* 9. 左下角 WhatsApp 快速客服按钮 */
+.floating-wa-help {
+    position: fixed;
+    bottom: 24px;
+    left: 24px;
+    background: #25d366;
+    color: #ffffff;
+    border-radius: 30px;
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+    cursor: pointer;
+    z-index: 999;
+    text-decoration: none;
+    transition: transform 0.2s;
+}
+
+.floating-wa-help:hover {
+    transform: scale(1.05);
+}
+
+/* 10. 侧边购物车 (Drawer) */
 .floating-cart {
     position: fixed;
     bottom: 24px;
@@ -453,7 +498,7 @@ body {
     cursor: pointer;
 }
 
-/* 10. 说明与关于区 */
+/* 11. 说明区与关于我们 */
 .info-content {
     display: flex;
     flex-direction: column;
