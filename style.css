@@ -1,630 +1,953 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", sans-serif;
-}
-
-/* 暖米色中秋韵味背景 + 柔和月光渐变 */
-body {
-    background-color: #f7f4eb;
-    background-image: 
-        radial-gradient(circle at 15% 15%, rgba(244, 208, 111, 0.18) 0%, transparent 45%),
-        radial-gradient(circle at 85% 85%, rgba(140, 42, 28, 0.08) 0%, transparent 45%),
-        radial-gradient(#d5cebe 1.2px, transparent 1.2px);
-    background-size: 100% 100%, 100% 100%, 24px 24px;
-    background-attachment: fixed;
-    color: #2c2523;
-    padding-bottom: 80px;
-    position: relative;
-    min-height: 100vh;
-    overflow-x: hidden;
-}
-
-/* 典雅中式双线窗花框 */
-.window-border-outer {
-    position: fixed;
-    top: 10px;
-    left: 10px;
-    right: 10px;
-    bottom: 10px;
-    border: 1.5px solid #c5a059;
-    pointer-events: none;
-    z-index: 99;
-}
-
-.window-border-inner {
-    position: fixed;
-    top: 14px;
-    left: 14px;
-    right: 14px;
-    bottom: 14px;
-    border: 1px dashed rgba(212, 175, 55, 0.5);
-    pointer-events: none;
-    z-index: 99;
-}
-
-/* 页面主容器 */
-.page-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 25px 20px;
-    position: relative;
-    z-index: 10;
-}
-
-/* ---------------- 中秋浮动元素 (Floating Elements) ---------------- */
-
-/* 左上角：缓动浮动月饼 */
-.page-container::before {
-    content: "🥮";
-    position: fixed;
-    top: 60px;
-    left: 30px;
-    font-size: 5rem;
-    opacity: 0.15;
-    pointer-events: none;
-    z-index: 1;
-    animation: floatMooncake 6s ease-in-out infinite;
-    filter: drop-shadow(0 10px 15px rgba(212, 175, 55, 0.3));
-}
-
-/* 右下角：缓动浮动明月与云彩 */
-.page-container::after {
-    content: "🌕";
-    position: fixed;
-    bottom: 80px;
-    right: 35px;
-    font-size: 6rem;
-    opacity: 0.12;
-    pointer-events: none;
-    z-index: 1;
-    animation: floatMooncake 8s ease-in-out infinite reverse;
-    filter: drop-shadow(0 0 20px rgba(244, 208, 111, 0.5));
-}
-
-/* 上下浮动动画帧 */
-@keyframes floatMooncake {
-    0% {
-        transform: translateY(0px) rotate(0deg);
-    }
-    50% {
-        transform: translateY(-18px) rotate(6deg);
-    }
-    100% {
-        transform: translateY(0px) rotate(0deg);
-    }
-}
-
-/* ---------------- 网页组件与排版 ---------------- */
-
-.store-header {
-    background: #ffffff;
-    border: 1.5px solid #c5a059;
-    border-radius: 8px;
-    padding: 16px 20px;
-    margin-bottom: 24px;
-    box-shadow: 0 4px 12px rgba(197, 160, 89, 0.1);
-}
-
-.brand-box {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.brand-logo {
-    width: 52px;
-    height: 52px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid #c5a059;
-}
-
-.logo-fallback {
-    width: 52px;
-    height: 52px;
-    border-radius: 50%;
-    background: #8c2a1c;
-    color: #f7e7c4;
-    font-size: 20px;
-    font-weight: bold;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 2px solid #c5a059;
-}
-
-.brand-title {
-    font-size: 1.3rem;
-    color: #1a1a1a;
-    font-weight: bold;
-}
-
-.brand-sub {
-    font-size: 0.82rem;
-    color: #7a6e65;
-}
-
-.block-section {
-    background: #ffffff;
-    border-radius: 10px;
-    border: 1px solid #dcd3c1;
-    padding: 24px;
-    margin-bottom: 24px;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.03);
-    transition: transform 0.2s;
-}
-
-.banner-section {
-    padding: 0;
-    overflow: hidden;
-    border: 1.5px solid #c5a059;
-}
-
-.banner-container {
-    position: relative;
-    width: 100%;
-    height: 230px;
-    background: linear-gradient(135deg, #2b1f1d 0%, #4a342e 100%);
-}
-
-.banner-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.banner-overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: linear-gradient(transparent, rgba(15, 10, 8, 0.92));
-    color: #ffffff;
-    padding: 20px 24px;
-}
-
-.banner-overlay h2 {
-    font-size: 1.6rem;
-    color: #f4d06f;
-    margin-bottom: 6px;
-    letter-spacing: 2px;
-}
-
-.banner-overlay p {
-    font-size: 0.9rem;
-    color: #d8c8b8;
-}
-
-.section-header {
-    border-bottom: 2px solid #c5a059;
-    padding-bottom: 10px;
-    margin-bottom: 20px;
-}
-
-.section-header h2 {
-    font-size: 1.25rem;
-    color: #8c2a1c;
-}
-
-.section-sub {
-    font-size: 0.8rem;
-    color: #7a6e65;
-    margin-top: 4px;
-    display: block;
-}
-
-.product-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 20px;
-    align-items: start;
-}
-
-.card {
-    background: #ffffff;
-    border-radius: 8px;
-    border: 1px solid #dcd3c1;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    transition: all 0.25s ease;
-}
-
-.card:hover {
-    transform: translateY(-4px);
-    border-color: #c5a059;
-    box-shadow: 0 6px 18px rgba(197, 160, 89, 0.15);
-}
-
-.card-img-container {
-    width: 100%;
-    padding-top: 75%;
-    position: relative;
-    background: #f0e6d2;
-}
-
-.card-img-container img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.card-body {
-    padding: 16px;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-}
-
-.product-name {
-    font-size: 1.05rem;
-    font-weight: bold;
-    color: #1a1a1a;
-    margin-bottom: 6px;
-}
-
-.product-desc {
-    font-size: 0.82rem;
-    color: #666666;
-    line-height: 1.4;
-    margin-bottom: 12px;
-    min-height: 34px;
-}
-
-.price-text {
-    font-size: 1.1rem;
-    font-weight: bold;
-    color: #8c2a1c;
-    margin-bottom: 12px;
-}
-
-.flavor-section {
-    background: #fcf9f2;
-    border: 1px solid #eae2d0;
-    border-radius: 6px;
-    padding: 10px;
-    margin-bottom: 15px;
-}
-
-.flavor-tip {
-    font-size: 0.78rem;
-    color: #555555;
-    margin-bottom: 8px;
-    font-weight: bold;
-}
-
-.limit-num {
-    color: #8c2a1c;
-}
-
-.flavor-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 8px;
-}
-
-.flavor-row:last-child {
-    margin-bottom: 0;
-}
-
-.flavor-name {
-    font-size: 0.82rem;
-    color: #333333;
-}
-
-.qty-picker {
-    display: flex;
-    align-items: center;
-    border: 1px solid #c5a059;
-    border-radius: 4px;
-    background: #ffffff;
-    overflow: hidden;
-}
-
-.btn-qty {
-    background: #e8dfcc;
-    border: none;
-    width: 26px;
-    height: 26px;
-    font-size: 0.9rem;
-    cursor: pointer;
-    color: #333;
-    transition: background 0.2s;
-}
-
-.btn-qty:hover {
-    background: #d8ceb8;
-}
-
-.qty-num {
-    padding: 0 10px;
-    font-size: 0.82rem;
-    font-weight: bold;
-}
-
-.single-qty-box {
-    margin-bottom: 15px;
-}
-
-.main-picker {
-    width: fit-content;
-}
-
-.btn-add-cart {
-    margin-top: auto;
-    background: #54433a;
-    color: #ffffff;
-    text-align: center;
-    padding: 10px;
-    border-radius: 6px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    border: none;
-    cursor: pointer;
-    transition: background 0.2s;
-}
-
-.btn-add-cart:hover {
-    background: #3e312a;
-}
-
-.info-content {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px;
-}
-
-.info-item {
-    display: flex;
-    gap: 14px;
-    align-items: flex-start;
-}
-
-.info-icon {
-    font-size: 1.4rem;
-}
-
-.info-item h4 {
-    font-size: 0.95rem;
-    color: #222222;
-    margin-bottom: 4px;
-}
-
-.info-item p {
-    font-size: 0.85rem;
-    color: #666666;
-    line-height: 1.5;
-}
-
-.about-text {
-    font-size: 0.9rem;
-    color: #555555;
-    line-height: 1.8;
-}
-
-/* ---------------- 侧边购物车 ---------------- */
-
-.floating-cart {
-    position: fixed;
-    bottom: 24px;
-    right: 24px;
-    background: #8c2a1c;
-    border: 2px solid #f4d06f;
-    color: #ffffff;
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.25);
-    font-size: 1.4rem;
-    z-index: 1000;
-}
-
-.cart-count {
-    position: absolute;
-    top: -2px;
-    right: -2px;
-    background: #ffffff;
-    color: #8c2a1c;
-    font-size: 0.72rem;
-    font-weight: bold;
-    width: 22px;
-    height: 22px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid #8c2a1c;
-}
-
-.drawer-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.4);
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-    z-index: 2000;
-}
-
-.drawer-overlay.active {
-    opacity: 1;
-    visibility: visible;
-}
-
-.side-drawer {
-    position: fixed;
-    top: 0;
-    right: -380px;
-    width: 360px;
-    max-width: 85vw;
-    height: 100vh;
-    background: #ffffff;
-    box-shadow: -4px 0 20px rgba(0,0,0,0.15);
-    z-index: 2001;
-    display: flex;
-    flex-direction: column;
-    transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.side-drawer.active {
-    right: 0 !important;
-}
-
-.drawer-header {
-    background: #fcf9f2;
-    padding: 18px 20px;
-    border-bottom: 1px solid #eae2d0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.drawer-header h3 {
-    font-size: 1.1rem;
-    color: #8c2a1c;
-}
-
-.close-drawer {
-    font-size: 1.6rem;
-    cursor: pointer;
-    color: #888;
-    line-height: 1;
-}
-
-.drawer-body {
-    flex-grow: 1;
-    padding: 20px;
-    overflow-y.auto;
-}
-
-.empty-text {
-    text-align: center;
-    color: #999999;
-    font-size: 0.9rem;
-    margin-top: 40px;
-}
-
-.cart-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    padding: 12px 0;
-    border-bottom: 1px solid #f0eae1;
-}
-
-.item-info h4 {
-    font-size: 0.95rem;
-    color: #1a1a1a;
-    margin-bottom: 4px;
-}
-
-.item-info p {
-    font-size: 0.8rem;
-    color: #666666;
-    margin-bottom: 6px;
-    line-height: 1.4;
-}
-
-.item-info .price {
-    font-size: 0.9rem;
-    font-weight: bold;
-    color: #8c2a1c;
-}
-
-.btn-del {
-    background: #ff4d4f;
-    color: #ffffff;
-    border: none;
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-size: 0.75rem;
-    cursor: pointer;
-}
-
-.drawer-footer {
-    padding: 20px;
-    background: #fcf9f2;
-    border-top: 1px solid #eae2d0;
-}
-
-.total-row {
-    display: flex;
-    justify-content: space-between;
-    font-size: 1rem;
-    font-weight: bold;
-    margin-bottom: 15px;
-    color: #222;
-}
-
-.total-price {
-    color: #8c2a1c;
-    font-size: 1.25rem;
-}
-
-.btn-checkout-wa {
-    width: 100%;
-    background: #25d366;
-    color: #ffffff;
-    border: none;
-    padding: 12px;
-    border-radius: 8px;
-    font-size: 0.95rem;
-    font-weight: bold;
-    cursor: pointer;
-    box-shadow: 0 2px 8px rgba(37, 211, 102, 0.2);
-}
-.type-select {
-    width: 100%;
-    padding: 8px 10px;
-    border: 1.5px solid #c5a059;
-    border-radius: 6px;
-    background: #ffffff;
-    font-size: 0.85rem;
-    color: #1a1a1a;
-    font-weight: bold;
-    margin-top: 4px;
-    margin-bottom: 8px;
-    outline: none;
-}
-/* 让所有商品图片与滑动轮播图完整显示（不被裁剪） */
-.card-img-container img,
-.slider-slide img {
-    object-fit: contain !important; /* 完整展示整张图片 */
-    background-color: #fcf9f2;      /* 给四周留白处衬托典雅的浅色背景 */
-    padding: 6px;                    /* 适当留白，显得更精致 */
-}
-/* 让图片按原始比例完整展示：不裁剪、不留白、不变形 */
-.card-img-container,
-.slider-slide {
-    padding-top: 0 !important;   /* 取消固定高度限制 */
-    height: auto !important;
-}
-
-.card-img-container img,
-.slider-slide img {
-    position: static !important; /* 让图片按照照片原比例撑开卡片 */
-    width: 100% !important;
-    height: auto !important;
-    object-fit: fill !important;
-    padding: 0 !important;      /* 移除所有留白 */
-    background-color: transparent !important;
-}
-
-/* 轮播图自适应调整 */
-.slider-wrapper {
-    align-items: flex-start;
-}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>月里人家 | 纯手工住家月饼 yuelirenjia.mooncake</title>
+    <link rel="stylesheet" href="style.css?v=24.0">
+    <style>
+        /* Banner 完整显示照片优化 */
+        .banner-container {
+            position: relative;
+            width: 100%;
+            background: #8c2a1c; /* 优雅的月饼红作为底色 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            border-radius: 12px;
+        }
+        .banner-img {
+            width: 100%;
+            height: auto;
+            max-height: 380px;
+            object-fit: contain; /* 关键：确保整张照片完整可见，绝不裁剪 */
+            display: block;
+        }
+
+        /* 照片滑动容器 (Swipe Slider) */
+        .slider-container {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            background: #f0e6d2;
+        }
+        .slider-wrapper {
+            display: flex;
+            transition: transform 0.3s ease-in-out;
+            width: 100%;
+        }
+        .slider-slide {
+            min-width: 100%;
+            position: relative;
+            padding-top: 75%;
+        }
+        .slider-slide img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(84, 67, 58, 0.6);
+            color: #ffffff;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+        .slider-btn.left { left: 8px; }
+        .slider-btn.right { right: 8px; }
+        .slider-dots {
+            position: absolute;
+            bottom: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 6px;
+            z-index: 2;
+        }
+        .slider-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+        }
+        .slider-dot.active {
+            background: #ffffff;
+            width: 16px;
+            border-radius: 4px;
+        }
+
+        /* 爆款 / 热销 标签样式 */
+        .badge-hot {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff4e50, #f9d423);
+            color: #fff;
+            font-size: 0.72rem;
+            font-weight: bold;
+            padding: 2px 8px;
+            border-radius: 12px;
+            margin-left: 6px;
+            vertical-align: middle;
+            box-shadow: 0 2px 6px rgba(255, 78, 80, 0.4);
+            animation: pulseBadge 1.8s infinite;
+        }
+        @keyframes pulseBadge {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.06); }
+            100% { transform: scale(1); }
+        }
+
+        /* 左下角 WhatsApp 客服直连按钮 */
+        .floating-wa-help {
+            position: fixed;
+            bottom: 24px;
+            left: 24px;
+            background: #25d366;
+            color: #ffffff;
+            border-radius: 30px;
+            padding: 10px 16px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+            cursor: pointer;
+            z-index: 999;
+            text-decoration: none;
+            transition: transform 0.2s;
+        }
+        .floating-wa-help:hover {
+            transform: scale(1.05);
+        }
+
+        /* ---------------- 复古打印小票 (Printing Receipt) 弹窗 ---------------- */
+        .receipt-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.65);
+            backdrop-filter: blur(4px);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 3000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
+        }
+        .receipt-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .receipt-paper {
+            background: #fffdf9;
+            width: 100%;
+            max-width: 360px;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 22px 18px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            font-family: "Courier New", Courier, monospace, sans-serif;
+            color: #222;
+            position: relative;
+            border-top: 4px solid #8c2a1c;
+            animation: receiptPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        @keyframes receiptPop {
+            0% { transform: scale(0.85) translateY(20px); opacity: 0; }
+            100% { transform: scale(1) translateY(0); opacity: 1; }
+        }
+        .receipt-header {
+            text-align: center;
+            border-bottom: 2px dashed #333;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+        }
+        .receipt-header h2 {
+            font-size: 1.15rem;
+            letter-spacing: 1px;
+            font-weight: bold;
+            color: #1a1a1a;
+        }
+        .receipt-header p {
+            font-size: 0.72rem;
+            color: #666;
+            margin-top: 2px;
+        }
+        .receipt-meta {
+            font-size: 0.75rem;
+            color: #444;
+            margin-bottom: 10px;
+            border-bottom: 1px dashed #ccc;
+            padding-bottom: 6px;
+        }
+        .receipt-items {
+            margin-bottom: 10px;
+        }
+        .receipt-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            margin-bottom: 4px;
+        }
+        .receipt-row .item-sub {
+            font-size: 0.7rem;
+            color: #666;
+            padding-left: 8px;
+            margin-bottom: 4px;
+        }
+        .receipt-divider {
+            border-top: 2px dashed #333;
+            margin: 10px 0;
+        }
+        .receipt-total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #8c2a1c;
+            margin-bottom: 12px;
+        }
+
+        /* 小票内部顾客资料填写区 */
+        .customer-form-box {
+            background: #fcf8f0;
+            border: 1px dashed #c5a059;
+            border-radius: 6px;
+            padding: 10px 12px;
+            margin-bottom: 12px;
+            font-family: -apple-system, sans-serif;
+        }
+        .form-title {
+            font-size: 0.8rem;
+            font-weight: bold;
+            color: #8c2a1c;
+            margin-bottom: 8px;
+            display: block;
+        }
+        .form-group {
+            margin-bottom: 8px;
+        }
+        .form-group label {
+            font-size: 0.75rem;
+            color: #444;
+            display: block;
+            margin-bottom: 3px;
+        }
+        .form-input, .form-select {
+            width: 100%;
+            padding: 6px 8px;
+            font-size: 0.8rem;
+            border: 1px solid #dcd3c1;
+            border-radius: 4px;
+            background: #fff;
+            outline: none;
+        }
+        .form-textarea {
+            width: 100%;
+            padding: 6px 8px;
+            font-size: 0.8rem;
+            border: 1px solid #dcd3c1;
+            border-radius: 4px;
+            background: #fff;
+            resize: vertical;
+            height: 50px;
+            outline: none;
+        }
+
+        .btn-confirm-wa {
+            width: 100%;
+            background: #25d366;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+            font-family: -apple-system, sans-serif;
+        }
+        .btn-close-receipt {
+            position: absolute;
+            top: 10px;
+            right: 12px;
+            background: #333;
+            color: #fff;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 22px;
+            cursor: pointer;
+            font-size: 13px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="window-border-outer"></div>
+    <div class="window-border-inner"></div>
+
+    <div class="page-container">
+
+        <!-- 1. Header 品牌区 -->
+        <header class="store-header">
+            <div class="brand-box">
+                <img src="images/logo.jpeg" alt="月里人家 Logo" class="brand-logo" onerror="this.style.display='none'; document.querySelector('.logo-fallback').style.display='flex';">
+                <div class="logo-fallback" style="display:none;">月</div>
+                <div>
+                    <h1 class="brand-title">月里人家</h1>
+                    <p class="brand-sub">yuelirenjia.mooncake · 纯手工住家烘焙</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- 2. Banner 宣传统图区 (图片完全无损展示) -->
+        <section class="block-section banner-section">
+            <div class="banner-container">
+                <img src="images/logo.jpeg" alt="月里人家中秋宣传" class="banner-img">
+            </div>
+        </section>
+
+        <!-- 3. 精选产品区 -->
+        <section class="block-section product-section">
+            <div class="section-header">
+                <h2>🥮 精选手工月饼</h2>
+                <span class="section-sub">选择规格与口味后加入购物车</span>
+            </div>
+
+            <div class="product-grid">
+
+                <!-- 商品 1：传统月饼 -->
+                <div class="card">
+                    <div class="slider-container" id="trad_slider">
+                        <div class="slider-wrapper" id="trad_wrapper">
+                            <div class="slider-slide">
+                                <img src="images/mooncake-1.jpeg" alt="月里人家传统月饼 1" onerror="this.src='images/logo.jpeg'">
+                            </div>
+                            <div class="slider-slide">
+                                <img src="images/mooncake-2.jpeg" alt="月里人家传统月饼 2" onerror="this.src='images/logo.jpeg'">
+                            </div>
+                        </div>
+                        <button class="slider-btn left" onclick="window.slideTrad(-1)">❮</button>
+                        <button class="slider-btn right" onclick="window.slideTrad(1)">❯</button>
+                        <div class="slider-dots">
+                            <span class="slider-dot active" id="dot_0" onclick="window.goToSlide(0)"></span>
+                            <span class="slider-dot" id="dot_1" onclick="window.goToSlide(1)"></span>
+                        </div>
+                    </div>
+
+                    <div class="card-body">
+                        <h3 class="product-name">传统月饼 (75g / 粒)</h3>
+                        <p class="product-desc">单粒重约 75g，全手工烘焙低糖馅料，精致适中不腻口（均附赠礼盒）。</p>
+                        
+                        <div class="flavor-section">
+                            <label class="flavor-tip">1. 选择包装规格 (Type):</label>
+                            <select id="box_type_select" class="type-select" onchange="window.switchBoxType()">
+                                <option value="4pcs">🎁 4 粒装 (1 Box / 4 pcs) — RM 28.00</option>
+                                <option value="6pcs">🎁 6 粒装 (1 Box / 6 pcs) — RM 40.00</option>
+                            </select>
+
+                            <p class="flavor-tip" style="margin-top: 10px;">2. 任选口味 (已选 <span id="current_flavor_count" class="limit-num">0</span>/<span id="max_flavor_limit">4</span> 粒):</p>
+                            
+                            <div class="flavor-row">
+                                <span class="flavor-name">🥮 翡翠豆蓉</span>
+                                <div class="qty-picker">
+                                    <button class="btn-qty" onclick="window.adjustFlavor('feicui', -1)">-</button>
+                                    <span class="qty-num" id="qty_feicui">0</span>
+                                    <button class="btn-qty" onclick="window.adjustFlavor('feicui', 1)">+</button>
+                                </div>
+                            </div>
+
+                            <div class="flavor-row">
+                                <span class="flavor-name">🥮 玫瑰豆沙</span>
+                                <div class="qty-picker">
+                                    <button class="btn-qty" onclick="window.adjustFlavor('dousha', -1)">-</button>
+                                    <span class="qty-num" id="qty_dousha">0</span>
+                                    <button class="btn-qty" onclick="window.adjustFlavor('dousha', 1)">+</button>
+                                </div>
+                            </div>
+
+                            <div class="flavor-row">
+                                <span class="flavor-name">🥮 咖啡</span>
+                                <div class="qty-picker">
+                                    <button class="btn-qty" onclick="window.adjustFlavor('coffee', -1)">-</button>
+                                    <span class="qty-num" id="qty_coffee">0</span>
+                                    <button class="btn-qty" onclick="window.adjustFlavor('coffee', 1)">+</button>
+                                </div>
+                            </div>
+
+                            <div class="flavor-row">
+                                <span class="flavor-name">🥮 白豆蓉</span>
+                                <div class="qty-picker">
+                                    <button class="btn-qty" onclick="window.adjustFlavor('baidourong', -1)">-</button>
+                                    <span class="qty-num" id="qty_baidourong">0</span>
+                                    <button class="btn-qty" onclick="window.adjustFlavor('baidourong', 1)">+</button>
+                                </div>
+                            </div>
+
+                            <div class="flavor-row">
+                                <span class="flavor-name">🥮 巧克力</span>
+                                <div class="qty-picker">
+                                    <button class="btn-qty" onclick="window.adjustFlavor('chocolate', -1)">-</button>
+                                    <span class="qty-num" id="qty_chocolate">0</span>
+                                    <button class="btn-qty" onclick="window.adjustFlavor('chocolate', 1)">+</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="btn-add-cart" onclick="window.addTradBoxToCart()">加入购物车</button>
+                    </div>
+                </div>
+
+                <!-- 商品 2：上海月饼 -->
+                <div class="card">
+                    <div class="card-img-container">
+                        <img src="images/shanghai.jpg" alt="月里人家上海月饼" onerror="this.src='images/logo.jpeg'">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="product-name">上海月饼</h3>
+                        <p class="product-desc">曲奇般牛油金黄酥皮，牛油香浓，一口沦陷。</p>
+                        
+                        <div class="flavor-section">
+                            <p class="flavor-tip">选择规格与加购数量：</p>
+                            
+                            <div class="flavor-row">
+                                <span class="flavor-name">🥮 单粒 (RM 9.50)</span>
+                                <div class="qty-picker">
+                                    <button class="btn-qty" onclick="window.adjustSingle('shanghai_single', -1)">-</button>
+                                    <span class="qty-num" id="qty_shanghai_single">0</span>
+                                    <button class="btn-qty" onclick="window.adjustSingle('shanghai_single', 1)">+</button>
+                                </div>
+                            </div>
+
+                            <div class="flavor-row">
+                                <span class="flavor-name">🎁 双粒装 2pcs (RM 18.00)</span>
+                                <div class="qty-picker">
+                                    <button class="btn-qty" onclick="window.adjustSingle('shanghai_double', -1)">-</button>
+                                    <span class="qty-num" id="qty_shanghai_double">0</span>
+                                    <button class="btn-qty" onclick="window.adjustSingle('shanghai_double', 1)">+</button>
+                                </div>
+                            </div>
+
+                            <div class="flavor-row">
+                                <span class="flavor-name">🎁 盒装 4pcs (RM 36.00)</span>
+                                <div class="qty-picker">
+                                    <button class="btn-qty" onclick="window.adjustSingle('shanghai_box', -1)">-</button>
+                                    <span class="qty-num" id="qty_shanghai_box">0</span>
+                                    <button class="btn-qty" onclick="window.adjustSingle('shanghai_box', 1)">+</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="btn-add-cart" onclick="window.addShanghaiToCart()">加入购物车</button>
+                    </div>
+                </div>
+
+                <!-- 商品 3：原味公仔饼 -->
+                <div class="card">
+                    <div class="card-img-container">
+                        <img src="images/mooncake-3.jpeg" alt="月里人家原味公仔饼" onerror="this.src='images/logo.jpeg'">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="product-name">原味公仔饼</h3>
+                        <p class="product-desc">纯手工压模现烤，糖浆饼皮软糯香浓，传统住家滋味 (1 Box / 10 pcs)。</p>
+                        <div class="price-text">RM 12.00 / Box</div>
+                        
+                        <div class="single-qty-box">
+                            <label class="flavor-tip">选择买多少盒：</label>
+                            <div class="qty-picker main-picker">
+                                <button class="btn-qty" onclick="window.adjustSingle('gongzai', -1)">-</button>
+                                <span class="qty-num" id="qty_gongzai">1</span>
+                                <button class="btn-qty" onclick="window.adjustSingle('gongzai', 1)">+</button>
+                            </div>
+                        </div>
+
+                        <button class="btn-add-cart" onclick="window.addSimpleToCart('gongzai', '原味公仔饼 (10粒装)', 12.00)">加入购物车</button>
+                    </div>
+                </div>
+
+                <!-- 商品 4：椰丝公仔饼 -->
+                <div class="card">
+                    <div class="card-img-container">
+                        <img src="images/mooncake-5.jpeg" alt="月里人家椰丝公仔饼" onerror="this.src='images/logo.jpeg'">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="product-name">
+                            椰丝公仔饼 <span class="badge-hot">🔥 爆款</span>
+                        </h3>
+                        <p class="product-desc">特制手工香炒椰丝馅，甜而不腻，浓郁南洋风味 (1 Box / 10 pcs)。</p>
+                        <div class="price-text">RM 16.00 / Box</div>
+                        
+                        <div class="single-qty-box">
+                            <label class="flavor-tip">选择买多少盒：</label>
+                            <div class="qty-picker main-picker">
+                                <button class="btn-qty" onclick="window.adjustSingle('coconut_gongzai', -1)">-</button>
+                                <span class="qty-num" id="qty_coconut_gongzai">1</span>
+                                <button class="btn-qty" onclick="window.adjustSingle('coconut_gongzai', 1)">+</button>
+                            </div>
+                        </div>
+
+                        <button class="btn-add-cart" onclick="window.addSimpleToCart('coconut_gongzai', '椰丝公仔饼 (10粒装)', 16.00)">加入购物车</button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 4. 说明区 -->
+        <section class="block-section delivery-section">
+            <div class="section-header">
+                <h2>🚗 预订、配送与保存说明 (Notice & Tips)</h2>
+            </div>
+            <div class="info-content">
+                <div class="info-item">
+                    <span class="info-icon">📌</span>
+                    <div>
+                        <h4>现做现发 (Fresh Batch)</h4>
+                        <p>纯手工住家烘焙，无现货，请提前 2-3 天预订。若收到速度较快，需静置数日<b>等待月饼回油</b>，饼皮才会格外软糯、口感最佳！</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <span class="info-icon">📦</span>
+                    <div>
+                        <h4>保存方法 (Storage Notice)</h4>
+                        <p><b>原味公仔饼</b>与<b>椰丝公仔饼</b>不含防腐剂，常温下请于 <b>3 天内食用完毕</b>；若吃不完务必密封放入<b>冰箱冷藏</b>保存。</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <span class="info-icon">📍</span>
+                    <div>
+                        <h4>配送方式 (Shipping & Pickup)</h4>
+                        <p>北海区（Butterworth）提供指定地点免费自取；其余地区统一提供西马邮寄（West Malaysia），邮费自付。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. 关于我们 -->
+        <section class="block-section about-section">
+            <div class="section-header">
+                <h2>🏡 关于「月里人家」</h2>
+            </div>
+            <p class="about-text">
+                “月里人家”源自对传统滋味的坚持。我们坚持使用纯手工制作每一颗月饼，严选优质食材，少油减糖，为你与家人在团圆佳节带来一份安心、温馨且道地的好滋味。
+            </p>
+        </section>
+
+    </div>
+
+    <!-- 左下角 WhatsApp 快速询问按钮 -->
+    <a href="https://wa.me/60123456789?text=你好！我想询问【月里人家】月饼预订详情。" target="_blank" class="floating-wa-help">
+        💬 咨询客服
+    </a>
+
+    <!-- 侧边购物车 -->
+    <div class="floating-cart" onclick="window.openCart()">
+        🛒 <span class="cart-count" id="cart-count">0</span>
+    </div>
+
+    <div class="drawer-overlay" id="drawer-overlay" onclick="window.closeCart()"></div>
+    <div class="side-drawer" id="side-drawer">
+        <div class="drawer-header">
+            <h3>🛒 我的购物车 (Checkout)</h3>
+            <span class="close-drawer" onclick="window.closeCart()">×</span>
+        </div>
+        <div class="drawer-body" id="drawer-body">
+            <p class="empty-text">购物车目前是空的，快去选购吧！</p>
+        </div>
+        <div class="drawer-footer">
+            <div class="total-row">
+                <span>总计金额 (Total):</span>
+                <span class="total-price" id="total-price">RM 0.00</span>
+            </div>
+            <button class="btn-checkout-wa" onclick="window.generateReceipt()">
+                🧾 结算并填写配送资料
+            </button>
+        </div>
+    </div>
+
+    <!-- 复古电子打印小票 Modal (含顾客资料填写区) -->
+    <div class="receipt-overlay" id="receipt-overlay">
+        <div class="receipt-paper">
+            <span class="btn-close-receipt" onclick="window.closeReceipt()">×</span>
+            <div class="receipt-header">
+                <h2>月里人家 · 预订小票</h2>
+                <p>yuelirenjia.mooncake</p>
+            </div>
+            <div class="receipt-meta">
+                <div>单号 Order: <span id="receipt-no">#YLRJ-8888</span></div>
+                <div>时间 Date: <span id="receipt-date">2026-08-31 20:45</span></div>
+            </div>
+
+            <div class="receipt-items" id="receipt-items-list">
+                <!-- 动态填充小票明细 -->
+            </div>
+            
+            <div class="receipt-divider"></div>
+            
+            <div class="receipt-total">
+                <span>TOTAL:</span>
+                <span id="receipt-grand-total">RM 0.00</span>
+            </div>
+
+            <!-- 顾客配送资料填写区 -->
+            <div class="customer-form-box">
+                <span class="form-title">📝 填写订购人与配送资料：</span>
+                <div class="form-group">
+                    <label>姓名 Name *</label>
+                    <input type="text" id="cust_name" class="form-input" placeholder="例如：张小明">
+                </div>
+                <div class="form-group">
+                    <label>电话号码 Contact No. *</label>
+                    <input type="tel" id="cust_phone" class="form-input" placeholder="例如：012-3456789">
+                </div>
+                <div class="form-group">
+                    <label>配送方式 Option *</label>
+                    <select id="cust_delivery_option" class="form-select" onchange="window.toggleAddressField()">
+                        <option value="自取 (Butterworth)">📍 北海区自取 (Self Pick-up @ Butterworth)</option>
+                        <option value="西马邮寄 (Postage)">📦 西马邮寄 (West Malaysia Postage)</option>
+                    </select>
+                </div>
+                <!-- 邮寄时显示的详细地址区 -->
+                <div class="form-group" id="address_group" style="display: none;">
+                    <label>邮寄完整地址 Address *</label>
+                    <textarea id="cust_address" class="form-textarea" placeholder="请填写详细收件地址、门牌、门路名、邮编与城市..."></textarea>
+                </div>
+            </div>
+
+            <button class="btn-confirm-wa" onclick="window.sendReceiptToWhatsApp()">
+                💬 确认小票并发至 WhatsApp
+            </button>
+        </div>
+    </div>
+
+    <script>
+        let currentSlideIndex = 0;
+        window.slideTrad = function(direction) {
+            currentSlideIndex = (currentSlideIndex + direction + 2) % 2;
+            window.goToSlide(currentSlideIndex);
+        };
+        window.goToSlide = function(index) {
+            currentSlideIndex = index;
+            document.getElementById('trad_wrapper').style.transform = `translateX(-${index * 100}%)`;
+            document.getElementById('dot_0').classList.toggle('active', index === 0);
+            document.getElementById('dot_1').classList.toggle('active', index === 1);
+        };
+
+        const flavorNames = {
+            'feicui': '翡翠豆蓉',
+            'dousha': '玫瑰豆沙',
+            'coffee': '咖啡',
+            'baidourong': '白豆蓉',
+            'chocolate': '巧克力'
+        };
+
+        let currentTradFlavors = { 'feicui': 0, 'dousha': 0, 'coffee': 0, 'baidourong': 0, 'chocolate': 0 };
+        
+        let singleQuantities = {
+            'shanghai_single': 0,
+            'shanghai_double': 0,
+            'shanghai_box': 0,
+            'gongzai': 1,
+            'coconut_gongzai': 1
+        };
+
+        let cart = [];
+
+        window.switchBoxType = function() {
+            let selectVal = document.getElementById('box_type_select').value;
+            let limit = (selectVal === '4pcs') ? 4 : 6;
+            document.getElementById('max_flavor_limit').innerText = limit;
+            
+            for (let key in currentTradFlavors) {
+                currentTradFlavors[key] = 0;
+                document.getElementById(`qty_${key}`).innerText = 0;
+            }
+            document.getElementById('current_flavor_count').innerText = 0;
+        };
+
+        window.adjustFlavor = function(flavorKey, delta) {
+            let selectVal = document.getElementById('box_type_select').value;
+            let maxLimit = (selectVal === '4pcs') ? 4 : 6;
+            let currentSum = Object.values(currentTradFlavors).reduce((a, b) => a + b, 0);
+
+            if (delta > 0 && currentSum >= maxLimit) {
+                alert(`当前选择的包装规格最多只能选择 ${maxLimit} 粒月饼！`);
+                return;
+            }
+
+            if (currentTradFlavors[flavorKey] + delta >= 0) {
+                currentTradFlavors[flavorKey] += delta;
+            }
+
+            document.getElementById(`qty_${flavorKey}`).innerText = currentTradFlavors[flavorKey];
+            let newSum = Object.values(currentTradFlavors).reduce((a, b) => a + b, 0);
+            document.getElementById('current_flavor_count').innerText = newSum;
+        };
+
+        window.adjustSingle = function(key, delta) {
+            if (singleQuantities[key] + delta >= 0) {
+                singleQuantities[key] += delta;
+                document.getElementById(`qty_${key}`).innerText = singleQuantities[key];
+            }
+        };
+
+        window.addTradBoxToCart = function() {
+            let selectVal = document.getElementById('box_type_select').value;
+            let limit = (selectVal === '4pcs') ? 4 : 6;
+            let price = (selectVal === '4pcs') ? 28.00 : 40.00;
+            let currentSum = Object.values(currentTradFlavors).reduce((a, b) => a + b, 0);
+
+            if (currentSum !== limit) {
+                alert(`请先选满 ${limit} 粒口味，再加入购物车（目前已选 ${currentSum}/${limit} 粒）`);
+                return;
+            }
+
+            let detailsArr = [];
+            for (let key in currentTradFlavors) {
+                if (currentTradFlavors[key] > 0) {
+                    detailsArr.push(`${flavorNames[key]} x${currentTradFlavors[key]}`);
+                }
+            }
+
+            cart.push({
+                title: `传统月饼 75g (${limit}粒装)`,
+                desc: detailsArr.join(', '),
+                price: price
+            });
+
+            window.switchBoxType();
+            window.updateCartDrawer();
+            window.openCart();
+        };
+
+        window.addShanghaiToCart = function() {
+            let singleQty = singleQuantities['shanghai_single'];
+            let doubleQty = singleQuantities['shanghai_double'];
+            let boxQty = singleQuantities['shanghai_box'];
+
+            if (singleQty === 0 && doubleQty === 0 && boxQty === 0) {
+                alert('请先选择加购的规格数量！');
+                return;
+            }
+
+            if (singleQty > 0) {
+                cart.push({
+                    title: '上海月饼 (单粒)',
+                    desc: `数量: ${singleQty} 粒`,
+                    price: 9.50 * singleQty
+                });
+            }
+
+            if (doubleQty > 0) {
+                cart.push({
+                    title: '上海月饼 (双粒装)',
+                    desc: `数量: ${doubleQty} 盒 (2pcs)`,
+                    price: 18.00 * doubleQty
+                });
+            }
+
+            if (boxQty > 0) {
+                cart.push({
+                    title: '上海月饼 (4粒盒装)',
+                    desc: `数量: ${boxQty} 盒 (4pcs)`,
+                    price: 36.00 * boxQty
+                });
+            }
+
+            singleQuantities['shanghai_single'] = 0;
+            singleQuantities['shanghai_double'] = 0;
+            singleQuantities['shanghai_box'] = 0;
+            document.getElementById('qty_shanghai_single').innerText = 0;
+            document.getElementById('qty_shanghai_double').innerText = 0;
+            document.getElementById('qty_shanghai_box').innerText = 0;
+
+            window.updateCartDrawer();
+            window.openCart();
+        };
+
+        window.addSimpleToCart = function(key, titleName, unitPrice) {
+            let qty = singleQuantities[key];
+            if (qty < 1) {
+                alert('请选择至少 1 盒！');
+                return;
+            }
+            cart.push({
+                title: titleName,
+                desc: `数量: ${qty} 盒`,
+                price: unitPrice * qty
+            });
+
+            singleQuantities[key] = 1;
+            document.getElementById(`qty_${key}`).innerText = 1;
+
+            window.updateCartDrawer();
+            window.openCart();
+        };
+
+        window.updateCartDrawer = function() {
+            document.getElementById('cart-count').innerText = cart.length;
+
+            let body = document.getElementById('drawer-body');
+            let totalEl = document.getElementById('total-price');
+
+            if (cart.length === 0) {
+                body.innerHTML = '<p class="empty-text">购物车目前是空的，快去选购吧！</p>';
+                totalEl.innerText = 'RM 0.00';
+                return;
+            }
+
+            let html = '';
+            let total = 0;
+
+            cart.forEach((item, index) => {
+                total += item.price;
+                html += `
+                    <div class="cart-item">
+                        <div class="item-info">
+                            <h4>${item.title}</h4>
+                            <p>${item.desc}</p>
+                            <span class="price">RM ${item.price.toFixed(2)}</span>
+                        </div>
+                        <button class="btn-del" onclick="window.removeFromCart(${index})">删除</button>
+                    </div>
+                `;
+            });
+
+            body.innerHTML = html;
+            totalEl.innerText = `RM ${total.toFixed(2)}`;
+        };
+
+        window.removeFromCart = function(index) {
+            cart.splice(index, 1);
+            window.updateCartDrawer();
+        };
+
+        window.openCart = function() {
+            document.getElementById('side-drawer').classList.add('active');
+            document.getElementById('drawer-overlay').classList.add('active');
+        };
+
+        window.closeCart = function() {
+            document.getElementById('side-drawer').classList.remove('active');
+            document.getElementById('drawer-overlay').classList.remove('active');
+        };
+
+        // 控制邮寄时展开地址输入框
+        window.toggleAddressField = function() {
+            let opt = document.getElementById('cust_delivery_option').value;
+            let addrBox = document.getElementById('address_group');
+            if (opt.includes('西马邮寄')) {
+                addrBox.style.display = 'block';
+            } else {
+                addrBox.style.display = 'none';
+            }
+        };
+
+        // 生成复古小票
+        window.generateReceipt = function() {
+            if (cart.length === 0) {
+                alert('购物车是空的！');
+                return;
+            }
+
+            let now = new Date();
+            let dateStr = now.getFullYear() + '-' + String(now.getMonth()+1).padStart(2,'0') + '-' + String(now.getDate()).padStart(2,'0') + ' ' + String(now.getHours()).padStart(2,'0') + ':' + String(now.getMinutes()).padStart(2,'0');
+            let randomNo = '#YLRJ-' + Math.floor(1000 + Math.random() * 9000);
+
+            document.getElementById('receipt-no').innerText = randomNo;
+            document.getElementById('receipt-date').innerText = dateStr;
+
+            let listHtml = '';
+            let grandTotal = 0;
+
+            cart.forEach((item) => {
+                grandTotal += item.price;
+                listHtml += `
+                    <div>
+                        <div class="receipt-row">
+                            <span>${item.title}</span>
+                            <span>RM ${item.price.toFixed(2)}</span>
+                        </div>
+                        <div class="item-sub">${item.desc}</div>
+                    </div>
+                `;
+            });
+
+            document.getElementById('receipt-items-list').innerHTML = listHtml;
+            document.getElementById('receipt-grand-total').innerText = `RM ${grandTotal.toFixed(2)}`;
+
+            window.closeCart();
+            document.getElementById('receipt-overlay').classList.add('active');
+        };
+
+        window.closeReceipt = function() {
+            document.getElementById('receipt-overlay').classList.remove('active');
+        };
+
+        // 验证资料并发送至 WhatsApp
+        window.sendReceiptToWhatsApp = function() {
+            let name = document.getElementById('cust_name').value.trim();
+            let phoneNum = document.getElementById('cust_phone').value.trim();
+            let deliveryOpt = document.getElementById('cust_delivery_option').value;
+            let address = document.getElementById('cust_address').value.trim();
+
+            if (!name) {
+                alert('请填写您的姓名！');
+                return;
+            }
+            if (!phoneNum) {
+                alert('请填写您的电话号码！');
+                return;
+            }
+            if (deliveryOpt.includes('西马邮寄') && !address) {
+                alert('选择邮寄必须填写收件地址！');
+                return;
+            }
+
+            let waPhone = "60123456789"; // 请改为你的真实 WhatsApp 电话号码
+            let receiptNo = document.getElementById('receipt-no').innerText;
+
+            let msg = `🧾 【月里人家】预订订单 (${receiptNo})\n-------------------------\n`;
+            msg += `👤 订购人：${name}\n📞 电话：${phoneNum}\n🚚 配送模式：${deliveryOpt}\n`;
+            
+            if (deliveryOpt.includes('西马邮寄')) {
+                msg += `🏠 邮寄地址：${address}\n`;
+            }
+            
+            msg += `-------------------------\n📦 预订订购明细：\n`;
+            let grandTotal = 0;
+
+            cart.forEach((item, i) => {
+                msg += `${i + 1}. ${item.title}\n   ${item.desc}\n   价格: RM ${item.price.toFixed(2)}\n\n`;
+                grandTotal += item.price;
+            });
+
+            msg += `-------------------------\n订单总计 (TOTAL): RM ${grandTotal.toFixed(2)}\n（邮费另计 / 北海区可自取）\n\n请帮我确认订单！`;
+
+            window.open(`https://wa.me/${waPhone}?text=${encodeURIComponent(msg)}`, '_blank');
+        };
+    </script>
+</body>
+</html>
